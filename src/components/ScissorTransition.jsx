@@ -70,7 +70,7 @@ const ScissorTransition = () => {
       </div>
 
       {/* Massive photorealistic (SVG/CSS constructed) Scissors */}
-      <div className="scissor-group absolute z-50 w-full flex items-center justify-center -top-[200px] pointer-events-none drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)]">
+      <div className="scissor-group absolute z-50 w-[200vw] -left-[50vw] sm:w-full sm:left-0 flex items-center justify-center -top-[100px] sm:-top-[200px] pointer-events-none drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)] transform scale-50 sm:scale-100 origin-center">
         <div className="relative w-[800px] h-[400px] flex items-center justify-center opacity-90">
 
             {/* Left Handle & Blade */}

@@ -48,9 +48,9 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen relative font-sans scroll-smooth">
+    <div className="min-h-screen relative font-sans scroll-smooth overflow-x-hidden">
       <Header />
-      <main>
+      <main className="overflow-x-hidden">
         <Hero />
         <ScissorTransition />
         <PriceList />

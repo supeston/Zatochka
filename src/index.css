@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-yellow: #facc15;
+  --color-brand-orange: #f97316;
+  --color-dark-bg: #0b131a;
+  --color-dark-panel: #141f27;
+  --color-metallic: #94a3b8;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-dark-bg);
+    color: white;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .text-metallic {
+    background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 40%, #94a3b8 50%, #475569 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-yellow-gradient {
+    background: linear-gradient(180deg, #fef08a 0%, #facc15 50%, #ca8a04 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .panel-metallic {
+    background: linear-gradient(145deg, #1a252f 0%, #0b131a 100%);
+    box-shadow:
+      inset 0px 1px 1px rgba(255, 255, 255, 0.1),
+      inset 0px -1px 2px rgba(0, 0, 0, 0.8),
+      0px 10px 20px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Glare hover effect */
+  .glare-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glare-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: all 0.75s ease;
+  }
+
+  .glare-container:hover::after {
+    left: 200%;
+  }
+
+  /* Thin metallic divider */
+  .metallic-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #facc15, transparent);
+    opacity: 0.8;
+  }
+}

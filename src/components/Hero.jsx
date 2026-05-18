@@ -23,7 +23,7 @@ const Hero = () => {
           className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-6"
         >
           <span className="text-metallic block">Профессиональная</span>
-          <span className="text-yellow-gradient mt-2 block">Zаточка</span>
+          <span className="text-yellow-gradient mt-2 block font-display">Zаточка</span>
         </motion.h1>
 
         <motion.div

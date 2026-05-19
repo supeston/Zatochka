@@ -15,29 +15,29 @@ const Hero = () => {
         className="absolute top-1/2 left-1/2 w-32 h-32 bg-brand-yellow/20 rounded-full blur-3xl pointer-events-none -z-10"
       />
 
-      <div className="max-w-5xl mx-auto px-6 text-center z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center z-10 w-full">
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-          className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-6"
+          className="text-[6.5vw] md:text-[5.5vw] lg:text-[4.5vw] xl:text-6xl leading-[1.1] font-black uppercase tracking-tight mb-6 w-full"
         >
-          <span className="text-metallic block">Профессиональная</span>
-          <span className="text-yellow-gradient mt-2 block">Zаточка</span>
+          <span className="text-metallic block pb-2 px-2">Профессиональная</span>
+          <span className="text-yellow-gradient mt-2 block font-display text-[15vw] sm:text-[12vw] md:text-7xl">Zаточка</span>
         </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 1, delay: 1, ease: "easeInOut" }}
-          className="metallic-divider w-3/4 mx-auto mb-8"
+          className="metallic-divider w-[90%] sm:w-3/4 mx-auto mb-8"
         />
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
-          className="text-xl md:text-2xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed"
+          className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light max-w-[90%] sm:max-w-3xl mx-auto leading-relaxed"
         >
           Инструмента для салонов красоты, ремонт оборудования, бытовой и охотничий инструмент
         </motion.p>

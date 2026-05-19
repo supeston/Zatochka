@@ -45,8 +45,8 @@ const PriceCategory = ({ title, items, icon: Icon, id }) => (
       <ul className="space-y-4">
         {items.map((item, idx) => (
           <li key={idx} className="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
-            <span className="text-gray-300 text-lg">{item.name}</span>
-            <span className="text-brand-yellow font-bold text-lg whitespace-nowrap ml-4">{item.price}</span>
+            <span className="text-gray-300 text-base sm:text-lg">{item.name}</span>
+            <span className="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">{item.price}</span>
           </li>
         ))}
       </ul>
@@ -114,9 +114,9 @@ const PriceList = () => {
   }, []);
 
   return (
-    <section id="price" className="py-24 px-6 relative" ref={containerRef}>
+    <section id="price" className="py-16 md:py-24 px-4 sm:px-6 relative" ref={containerRef}>
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-black text-center mb-16 text-metallic uppercase price-title">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-10 sm:mb-16 text-metallic uppercase price-title">
           Прайс-лист
         </h2>
 

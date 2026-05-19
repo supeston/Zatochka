@@ -1,1 +1,6 @@
 node_modules/
+dist/
+videos/
+screenshot.cjs
+frontend_screenshot.png
+dev.log

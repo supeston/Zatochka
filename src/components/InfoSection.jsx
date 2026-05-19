@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { MapPin, Clock, Wrench } from 'lucide-react';
+import { TelegramChannelIcon, TelegramAccountIcon, MaxIcon } from './Icons';
 
 const InfoSection = () => {
   return (
@@ -62,7 +63,9 @@ const InfoSection = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]"
               >
-                <i className="fa-regular fa-paper-plane text-brand-yellow text-xl group-hover:scale-110 transition-transform"></i>
+                <div className="text-brand-yellow group-hover:scale-110 transition-transform">
+                  <TelegramAccountIcon className="w-5 h-5 text-current" />
+                </div>
                 <span>Задать вопрос</span>
               </a>
               <a
@@ -72,8 +75,22 @@ const InfoSection = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]"
               >
-                <i className="fa-brands fa-telegram text-brand-yellow text-xl group-hover:scale-110 transition-transform"></i>
+                <div className="text-brand-yellow group-hover:scale-110 transition-transform">
+                  <TelegramChannelIcon className="w-5 h-5 text-current" />
+                </div>
                 <span>Канал</span>
+              </a>
+              <a
+                href="https://max.ru/+79272422685"
+                target="_blank"
+                title="Max"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]"
+              >
+                <div className="text-brand-yellow group-hover:scale-110 transition-transform">
+                  <MaxIcon className="w-5 h-5 text-current" />
+                </div>
+                <span>Max</span>
               </a>
               <a
                 href="https://go.2gis.com/J7Qd1"
@@ -93,4 +110,4 @@ const InfoSection = () => {
   );
 };
 
-export default InfoSection;
+export default memo(InfoSection);

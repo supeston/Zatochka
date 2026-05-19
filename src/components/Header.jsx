@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone } from 'lucide-react';
-import logoUrl from '../assets/logo.png';
+import { TelegramChannelIcon, TelegramAccountIcon, MaxIcon } from './Icons';
 
 const Header = () => {
   return (
@@ -14,8 +14,8 @@ const Header = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex items-center"
         >
-          <span className="text-2xl sm:text-4xl font-black italic tracking-tighter font-display">
-            <span className="text-yellow-gradient">Z</span>
+          <span className="text-2xl sm:text-4xl font-black italic tracking-tighter font-display flex items-baseline">
+            <span className="text-yellow-gradient pr-[2px]">Z</span>
             <span className="text-metallic">АТОЧКА</span>
           </span>
         </motion.div>
@@ -34,7 +34,7 @@ const Header = () => {
               whileHover={{ scale: 1.1, boxShadow: "0px 0px 15px rgba(250, 204, 21, 0.5)" }}
               className="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow transition-all"
             >
-              <i className="fa-regular fa-paper-plane text-xl"></i>
+              <TelegramAccountIcon className="w-5 h-5" />
             </motion.a>
             <motion.a
               href="https://t.me/zatochkaK"
@@ -47,11 +47,12 @@ const Header = () => {
               whileHover={{ scale: 1.1, boxShadow: "0px 0px 15px rgba(250, 204, 21, 0.5)" }}
               className="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow transition-all"
             >
-               <i className="fa-brands fa-telegram text-xl"></i>
+               <TelegramChannelIcon className="w-5 h-5" />
             </motion.a>
             <motion.a
               href="https://go.2gis.com/J7Qd1"
               target="_blank"
+              title="Мы на карте"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,6 +61,19 @@ const Header = () => {
               className="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow transition-all"
             >
                <i className="fa-solid fa-map-location-dot text-xl"></i>
+            </motion.a>
+            <motion.a
+              href="https://max.ru/+79272422685"
+              target="_blank"
+              title="Max"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              whileHover={{ scale: 1.1, boxShadow: "0px 0px 15px rgba(250, 204, 21, 0.5)" }}
+              className="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:border-brand-yellow transition-all"
+            >
+               <MaxIcon className="w-6 h-6 hover:brightness-200 transition-all" />
             </motion.a>
           </div>
 

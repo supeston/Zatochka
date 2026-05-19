@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
 import { Scissors, Hammer, Wrench } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -27,7 +27,7 @@ const prices = {
   ]
 };
 
-const PriceCategory = ({ title, items, icon: Icon, id }) => (
+const PriceCategory = memo(({ title, items, icon: Icon, id }) => (
   <div id={id} className="price-category panel-metallic p-6 md:p-8 rounded-xl glare-container relative overflow-hidden group opacity-0 translate-y-12">
     {/* Background accent */}
     <div className={`absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none text-brand-yellow category-icon-${id}`}>
@@ -52,7 +52,9 @@ const PriceCategory = ({ title, items, icon: Icon, id }) => (
       </ul>
     </div>
   </div>
-);
+));
+
+PriceCategory.displayName = 'PriceCategory';
 
 const PriceList = () => {
   const containerRef = useRef(null);
@@ -145,4 +147,4 @@ const PriceList = () => {
   );
 };
 
-export default PriceList;
+export default memo(PriceList);

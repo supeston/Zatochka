@@ -63,7 +63,7 @@ const Header = () => {
                <i className="fa-solid fa-map-location-dot text-xl"></i>
             </motion.a>
             <motion.a
-              href="https://max.ru/+79272422685"
+              href="https://max.ru/u/f9LHodD0cOI6eF2fqc0EAxuzP-8Y0REIDecsMGmjJj0oPTIQYLWaEU1smpE"
               target="_blank"
               title="Max"
               rel="noopener noreferrer"

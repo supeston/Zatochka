@@ -64,7 +64,7 @@ const InfoSection = () => {
                 className="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]"
               >
                 <div className="text-brand-yellow group-hover:scale-110 transition-transform">
-                  <TelegramAccountIcon className="w-5 h-5 text-current" />
+                  <TelegramAccountIcon className="w-5 h-5 text-current shrink-0" />
                 </div>
                 <span>Задать вопрос</span>
               </a>
@@ -76,19 +76,19 @@ const InfoSection = () => {
                 className="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]"
               >
                 <div className="text-brand-yellow group-hover:scale-110 transition-transform">
-                  <TelegramChannelIcon className="w-5 h-5 text-current" />
+                  <TelegramChannelIcon className="w-5 h-5 text-current shrink-0" />
                 </div>
                 <span>Канал</span>
               </a>
               <a
-                href="https://max.ru/+79272422685"
+                href="https://max.ru/u/f9LHodD0cOI6eF2fqc0EAxuzP-8Y0REIDecsMGmjJj0oPTIQYLWaEU1smpE"
                 target="_blank"
                 title="Max"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]"
               >
                 <div className="text-brand-yellow group-hover:scale-110 transition-transform">
-                  <MaxIcon className="w-5 h-5 text-current" />
+                  <MaxIcon className="w-5 h-5 text-current shrink-0" />
                 </div>
                 <span>Max</span>
               </a>

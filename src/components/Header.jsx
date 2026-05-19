@@ -9,14 +9,14 @@ const Header = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex items-center gap-1 sm:gap-2"
+          className="flex items-center"
         >
-          <img src={logoUrl} alt="Zаточка" className="h-10 w-10 sm:h-16 sm:w-16 object-contain rounded-full shadow-[0_0_15px_rgba(250,204,21,0.3)]" />
-          <span className="text-2xl sm:text-4xl font-black italic tracking-tighter">
-            <span className="text-metallic font-display">АТОЧКА</span>
+          <span className="text-2xl sm:text-4xl font-black italic tracking-tighter font-display">
+            <span className="text-yellow-gradient">Z</span>
+            <span className="text-metallic">АТОЧКА</span>
           </span>
         </motion.div>
 
@@ -26,6 +26,7 @@ const Header = () => {
             <motion.a
               href="https://t.me/ChelnyZatochka"
               target="_blank"
+              title="Написать нам"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -33,11 +34,12 @@ const Header = () => {
               whileHover={{ scale: 1.1, boxShadow: "0px 0px 15px rgba(250, 204, 21, 0.5)" }}
               className="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow transition-all"
             >
-              <i className="fa-brands fa-telegram text-xl"></i>
+              <i className="fa-regular fa-paper-plane text-xl"></i>
             </motion.a>
             <motion.a
               href="https://t.me/zatochkaK"
               target="_blank"
+              title="Наш канал"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}

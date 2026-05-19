@@ -3,7 +3,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import PriceList from './components/PriceList';
 import InfoSection from './components/InfoSection';
-import ScissorTransition from './components/ScissorTransition';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -52,7 +51,6 @@ function App() {
       <Header />
       <main className="overflow-x-hidden">
         <Hero />
-        <ScissorTransition />
         <PriceList />
         <InfoSection />
       </main>
@@ -63,14 +61,16 @@ function App() {
             <a
               href="https://t.me/ChelnyZatochka"
               target="_blank"
+              title="Написать нам"
               rel="noopener noreferrer"
               className="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow transition-all"
             >
-              <i className="fa-brands fa-telegram text-xl"></i>
+              <i className="fa-regular fa-paper-plane text-xl"></i>
             </a>
             <a
               href="https://t.me/zatochkaK"
               target="_blank"
+              title="Наш канал"
               rel="noopener noreferrer"
               className="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow transition-all"
             >

@@ -58,15 +58,17 @@ const InfoSection = () => {
               <a
                 href="https://t.me/ChelnyZatochka"
                 target="_blank"
+                title="Написать нам"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]"
               >
-                <i className="fa-brands fa-telegram text-brand-yellow text-xl group-hover:scale-110 transition-transform"></i>
+                <i className="fa-regular fa-paper-plane text-brand-yellow text-xl group-hover:scale-110 transition-transform"></i>
                 <span>Задать вопрос</span>
               </a>
               <a
                 href="https://t.me/zatochkaK"
                 target="_blank"
+                title="Наш канал"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]"
               >
@@ -80,7 +82,7 @@ const InfoSection = () => {
                 className="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]"
               >
                 <i className="fa-solid fa-map-location-dot text-brand-yellow text-xl group-hover:scale-110 transition-transform"></i>
-                <span>2GIS</span>
+                <span>Мы на карте</span>
               </a>
             </div>
           </div>

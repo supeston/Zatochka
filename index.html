@@ -1,16 +1,521 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zаточка - Профессиональная заточка инструмента</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
-  </head>
-  <body class="text-white overflow-x-hidden antialiased">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zаточка - Профессиональная заточка</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Russo+One&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-yellow': '#facc15',
+            'brand-orange': '#f97316',
+            'dark-bg': '#0d384e',
+            'dark-panel': '#0a2737',
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'sans-serif'],
+            display: ['"Russo One"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0d384e;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 100%),
+        radial-gradient(circle at 50% 0%, #155575 0%, #0d384e 50%, #061923 100%);
+      background-attachment: fixed;
+      color: white;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .text-metallic {
+      background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 40%, #cbd5e1 60%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+    }
+
+    .text-yellow-gradient {
+      background: linear-gradient(180deg, #fef08a 0%, #facc15 50%, #ca8a04 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .panel-metallic {
+      background: linear-gradient(145deg, #1a252f 0%, #0b131a 100%);
+      box-shadow:
+        inset 0px 1px 1px rgba(255, 255, 255, 0.1),
+        inset 0px -1px 2px rgba(0, 0, 0, 0.8),
+        0px 10px 20px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .glare-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glare-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-25deg);
+      transition: all 0.75s ease;
+    }
+
+    .glare-container:hover::after {
+      left: 200%;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .scroll-snap-align-center {
+      scroll-snap-align: center;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative font-sans overflow-x-hidden text-gray-200">
+
+  <!-- Header -->
+  <header class="fixed w-full top-0 z-50 px-6 py-4 bg-dark-bg/80 backdrop-blur-md border-b border-white/5 opacity-0 -translate-y-full" id="header">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+      <!-- Logo -->
+      <div class="flex items-center">
+        <span class="text-2xl sm:text-4xl font-black italic tracking-tighter font-display flex items-baseline">
+          <span class="text-yellow-gradient pr-[2px]">Z</span>
+          <span class="text-metallic">АТОЧКА</span>
+        </span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <!-- Social Icons -->
+        <div class="hidden md:flex gap-3">
+          <a href="https://t.me/ChelnyZatochka" target="_blank" title="Написать нам" class="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow transition-all hover:scale-110 hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </a>
+          <a href="https://t.me/zatochkaK" target="_blank" title="Наш канал" class="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow transition-all hover:scale-110 hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.68c.223-.198-.054-.31-.346-.11l-6.4 4.03-2.76-.864c-.602-.188-.614-.602.126-.893l10.78-4.155c.498-.186.938.118.78.837z"/></svg>
+          </a>
+          <a href="https://go.2gis.com/J7Qd1" target="_blank" title="Мы на карте" class="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow transition-all hover:scale-110 hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]">
+            <i class="fa-solid fa-map-location-dot text-xl"></i>
+          </a>
+          <a href="https://max.ru/u/f9LHodD0cOI6eF2fqc0EAxuzP-8Y0REIDecsMGmjJj0oPTIQYLWaEU1smpE" target="_blank" title="Max" class="bg-dark-panel w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white hover:border-brand-yellow transition-all hover:scale-110 hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]">
+            <img src="https://max.ru/favicon.ico" alt="Max" class="w-5 h-5 invert hover:brightness-200 transition-all object-contain" />
+          </a>
+        </div>
+
+        <!-- Phone -->
+        <a href="tel:+79272422685" class="flex items-center gap-2 sm:gap-3 glare-container panel-metallic px-3 py-1.5 sm:px-4 sm:py-2 rounded-full cursor-pointer">
+          <div class="bg-brand-yellow text-dark-bg p-1.5 sm:p-2 rounded-full phone-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sm:w-[18px] sm:h-[18px]"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <span class="font-bold text-sm sm:text-lg hidden md:block tracking-wide">8 927 242-26-85</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center pt-20 px-4" id="hero">
+      <div class="max-w-5xl mx-auto text-center relative z-10 w-full">
+        <!-- Logo/Title -->
+        <div class="mb-6 sm:mb-8 mx-auto w-fit opacity-0 translate-y-12" id="hero-title">
+          <h1 class="text-[clamp(2.5rem,8vw,6rem)] leading-none font-black tracking-tighter flex flex-col items-center select-none font-display text-metallic drop-shadow-2xl">
+            <span class="block px-2 pb-2">Профессиональная</span>
+            <span class="flex items-baseline mt-[-10px] sm:mt-[-20px] ml-4 sm:ml-8 relative">
+              <span class="text-brand-orange text-[clamp(3.5rem,10vw,8rem)] italic pr-1">Z</span>
+              <span class="italic text-[clamp(3rem,9vw,7rem)] relative">
+                АТОЧКА
+                <span class="absolute bottom-1 sm:bottom-2 left-0 w-full h-1 sm:h-2 bg-gradient-to-r from-brand-yellow to-brand-orange rounded-full"></span>
+              </span>
+            </span>
+          </h1>
+        </div>
+
+        <!-- Subtitle -->
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium max-w-3xl mx-auto mb-10 sm:mb-12 opacity-0" id="hero-subtitle">
+          Инструмента для салонов красоты, ремонт оборудования, бытовой и охотничий инструмент.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0" id="hero-cta">
+          <a href="#price" class="px-8 py-4 bg-gradient-to-r from-brand-orange to-brand-yellow text-dark-bg font-bold rounded-lg text-lg uppercase tracking-wider hover:scale-105 transition-transform shadow-[0_0_20px_rgba(249,115,22,0.4)] w-full sm:w-auto">
+            Смотреть прайс
+          </a>
+          <a href="#work" class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold rounded-lg text-lg uppercase tracking-wider hover:bg-white/20 hover:border-brand-yellow hover:text-brand-yellow transition-all w-full sm:w-auto text-center">
+            Наши работы
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price List -->
+    <section id="price" class="py-16 md:py-24 px-4 sm:px-6 relative">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-10 sm:mb-16 text-metallic uppercase" id="price-title">
+          Прайс-лист
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="price-grid">
+
+          <!-- Hair -->
+          <div class="price-category panel-metallic p-6 md:p-8 rounded-xl glare-container relative overflow-hidden group opacity-0 translate-y-12">
+            <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none text-brand-yellow" id="icon-hair">
+              <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" x2="8.12" y1="4" y2="15.88"/><line x1="14.47" x2="20" y1="14.48" y2="20"/><line x1="8.12" x2="12" y1="8.12" y2="12"/></svg>
+            </div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="p-3 bg-dark-bg rounded-lg border border-white/5 shadow-inner">
+                  <svg class="text-brand-yellow" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" x2="8.12" y1="4" y2="15.88"/><line x1="14.47" x2="20" y1="14.48" y2="20"/><line x1="8.12" x2="12" y1="8.12" y2="12"/></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-metallic uppercase tracking-wide">Парикмахерские</h3>
+              </div>
+              <ul class="space-y-4">
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Ножницы Могилевские</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">250р</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Ножницы прямые</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">500р</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Ножницы филировочные</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">600р</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Ножницы слайс</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">800р</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Нож для машинки</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">800р</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Manicure -->
+          <div class="price-category panel-metallic p-6 md:p-8 rounded-xl glare-container relative overflow-hidden group opacity-0 translate-y-12">
+            <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none text-brand-yellow" id="icon-manicure">
+              <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="p-3 bg-dark-bg rounded-lg border border-white/5 shadow-inner">
+                  <svg class="text-brand-yellow" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-metallic uppercase tracking-wide">Маникюрные</h3>
+              </div>
+              <ul class="space-y-4">
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Пинцет</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">200р</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Кусачки, твизеры, ножнички</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">400р</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Кусачки педикюрные (паруса)</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">500р</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Household -->
+          <div class="price-category panel-metallic p-6 md:p-8 rounded-xl glare-container relative overflow-hidden group opacity-0 translate-y-12">
+            <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none text-brand-yellow" id="icon-household">
+              <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.373 8.373a1 1 0 1 1-1.414-1.414L13.586 10.586"/><path d="m18.293 11.707 1.414-1.414a1 1 0 0 0 0-1.414l-7.586-7.586a1 1 0 0 0-1.414 0L9.293 2.707a1 1 0 0 0 0 1.414L16.879 11.707a1 1 0 0 0 1.414 0Z"/></svg>
+            </div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="p-3 bg-dark-bg rounded-lg border border-white/5 shadow-inner">
+                  <svg class="text-brand-yellow" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.373 8.373a1 1 0 1 1-1.414-1.414L13.586 10.586"/><path d="m18.293 11.707 1.414-1.414a1 1 0 0 0 0-1.414l-7.586-7.586a1 1 0 0 0-1.414 0L9.293 2.707a1 1 0 0 0 0 1.414L16.879 11.707a1 1 0 0 0 1.414 0Z"/></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-metallic uppercase tracking-wide">Бытовые</h3>
+              </div>
+              <ul class="space-y-4">
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Цепь для бензопилы</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">350р</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Нож охотничий</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">200-400р</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Нож кухонный</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">100-400р</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Нож для рубанка 10см</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">200р</span>
+                </li>
+                <li class="flex justify-between items-center border-b border-white/10 pb-2 hover:border-brand-yellow/50 transition-colors">
+                  <span class="text-gray-300 text-base sm:text-lg">Топор</span>
+                  <span class="text-brand-yellow font-bold text-base sm:text-lg whitespace-nowrap ml-2 sm:ml-4">200-600р</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Gallery -->
+    <section class="py-16 md:py-24 px-4 bg-[#080d12] relative overflow-hidden border-t border-white/5" id="work">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-4 mb-10 md:mb-16">
+          <h2 class="text-3xl md:text-5xl font-black uppercase text-metallic tracking-wider">
+            Наши работы
+          </h2>
+          <div class="h-1 flex-1 bg-gradient-to-r from-brand-orange/50 to-transparent rounded-full hidden sm:block"></div>
+        </div>
+
+        <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scrollbar">
+          <!-- Videos mapped via JS -->
+          <div class="video-container" data-src="./videos/video1.mp4"></div>
+          <div class="video-container" data-src="./videos/video2.mp4"></div>
+          <div class="video-container" data-src="./videos/video3.mp4"></div>
+          <div class="video-container" data-src="./videos/video4.mp4"></div>
+          <div class="video-container" data-src="./videos/video5.mp4"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="py-16 md:py-24 px-4 sm:px-6 bg-[#080d12] relative overflow-hidden">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+
+        <div class="panel-metallic p-6 sm:p-8 md:p-12 rounded-xl glare-container border-l-4 border-l-brand-orange info-card opacity-0 translate-y-12">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
+            <svg class="text-brand-orange shrink-0" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            <h3 class="text-2xl sm:text-3xl font-bold uppercase text-metallic">Ремонт оборудования</h3>
+          </div>
+          <p class="text-lg sm:text-xl text-gray-300 leading-relaxed">
+            Ремонт парикмахерского и маникюрного оборудования осуществляется по <span class="text-brand-orange font-bold">предварительной договорённости</span> о цене.
+          </p>
+        </div>
+
+        <div class="panel-metallic p-6 sm:p-8 md:p-12 rounded-xl glare-container info-card opacity-0 translate-y-12">
+          <h3 class="text-2xl sm:text-3xl font-bold uppercase text-metallic mb-6 sm:mb-8">Контакты</h3>
+
+          <div class="space-y-8">
+            <div class="flex gap-4">
+              <div class="mt-1">
+                <svg class="text-brand-yellow" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-white mb-2 uppercase tracking-wide">Адрес</h4>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                  39-й комплекс, 7а бульвар Касимова, 11а.<br/>
+                  Новый Город м-н, Центральный район,<br/>
+                  Набережные Челны, Республика Татарстан.<br/>
+                  <span class="text-brand-yellow font-bold">2 этаж</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="mt-1">
+                <svg class="text-brand-yellow" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-white mb-2 uppercase tracking-wide">График работы</h4>
+                <p class="text-gray-300 text-lg">
+                  <span class="inline-block w-16">Пн-Пт</span>
+                  <span class="text-white font-bold">11:00–14:00</span>
+                </p>
+                <p class="text-gray-300 text-lg mt-1">
+                  <span class="inline-block w-16">Сб-Вс</span>
+                  <span class="text-brand-orange font-bold">Выходной</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-white/10 flex flex-wrap gap-4">
+              <a href="https://t.me/ChelnyZatochka" target="_blank" class="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]">
+                <div class="text-brand-yellow group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                </div>
+                <span>Задать вопрос</span>
+              </a>
+              <a href="https://t.me/zatochkaK" target="_blank" class="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]">
+                <div class="text-brand-yellow group-hover:scale-110 transition-transform">
+                  <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.68c.223-.198-.054-.31-.346-.11l-6.4 4.03-2.76-.864c-.602-.188-.614-.602.126-.893l10.78-4.155c.498-.186.938.118.78.837z"/></svg>
+                </div>
+                <span>Канал</span>
+              </a>
+              <a href="https://max.ru/u/f9LHodD0cOI6eF2fqc0EAxuzP-8Y0REIDecsMGmjJj0oPTIQYLWaEU1smpE" target="_blank" class="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]">
+                <div class="text-brand-yellow group-hover:scale-110 transition-transform">
+                  <img src="https://max.ru/favicon.ico" alt="Max" class="w-5 h-5 invert object-contain shrink-0" />
+                </div>
+                <span>Max</span>
+              </a>
+              <a href="https://go.2gis.com/J7Qd1" target="_blank" class="flex items-center gap-2 bg-dark-bg px-4 py-2 rounded-lg border border-white/10 hover:border-brand-yellow transition-colors group flex-1 justify-center min-w-[140px]">
+                <i class="fa-solid fa-map-location-dot text-brand-yellow text-xl group-hover:scale-110 transition-transform"></i>
+                <span>Мы на карте</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-8 text-center border-t border-white/5 bg-dark-bg flex flex-col items-center justify-center gap-4">
+    <p class="text-gray-500">© <span id="year"></span> Zаточка. Профессиональная заточка инструмента в Набережных Челнах.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Render Videos
+    const videoContainers = document.querySelectorAll('.video-container');
+    videoContainers.forEach(container => {
+      const src = container.getAttribute('data-src');
+
+      container.className = "relative flex-none w-64 md:w-72 lg:w-80 h-[450px] md:h-[500px] lg:h-[550px] rounded-2xl overflow-hidden cursor-pointer group shrink-0 scroll-snap-align-center border border-white/10 hover:border-brand-yellow/50 transition-colors bg-dark-panel";
+
+      const video = document.createElement('video');
+      video.src = src;
+      video.className = "w-full h-full object-cover";
+      video.loop = true;
+      video.muted = false; // with sound
+      video.playsInline = true;
+      video.preload = "metadata";
+
+      const gradient = document.createElement('div');
+      gradient.className = "absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none";
+
+      const overlay = document.createElement('div');
+      overlay.className = "absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300";
+
+      const playIcon = `<div class="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>`;
+      const pauseIcon = `<div class="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center border border-white/20"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></div>`;
+
+      overlay.innerHTML = playIcon;
+
+      container.appendChild(video);
+      container.appendChild(gradient);
+      container.appendChild(overlay);
+
+      let isPlaying = false;
+      container.addEventListener('click', () => {
+        if (isPlaying) {
+          video.pause();
+          overlay.innerHTML = playIcon;
+        } else {
+          video.play();
+          overlay.innerHTML = pauseIcon;
+        }
+        isPlaying = !isPlaying;
+      });
+    });
+
+    // Animations
+    document.addEventListener("DOMContentLoaded", (event) => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Header
+      gsap.to("#header", { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
+
+      // Hero
+      const tl = gsap.timeline();
+      tl.to("#hero-title", { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", delay: 0.2 })
+        .to("#hero-subtitle", { opacity: 1, duration: 0.8 }, "-=0.4")
+        .to("#hero-cta", { opacity: 1, duration: 0.8 }, "-=0.4");
+
+      // Phone pulse animation
+      gsap.to(".phone-pulse", {
+        scale: 1.15,
+        opacity: 0.8,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut"
+      });
+
+      // Price Cards
+      gsap.to(".price-category", {
+        scrollTrigger: {
+          trigger: "#price-grid",
+          start: "top 80%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out"
+      });
+
+      // Info Cards
+      gsap.to(".info-card", {
+        scrollTrigger: {
+          trigger: ".info-card",
+          start: "top 85%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power3.out"
+      });
+
+      // Parallax Icons
+      gsap.to("#icon-hair svg", {
+        scrollTrigger: { trigger: "#price-grid", start: "top 80%", end: "bottom 20%", scrub: 1 },
+        rotate: 45, scale: 1.2, transformOrigin: "center center"
+      });
+      gsap.to("#icon-manicure svg", {
+        scrollTrigger: { trigger: "#price-grid", start: "top 80%", end: "bottom 20%", scrub: 1 },
+        y: 20, rotate: -15
+      });
+      gsap.to("#icon-household svg", {
+        scrollTrigger: { trigger: "#price-grid", start: "top 80%", end: "bottom 20%", scrub: 1 },
+        rotate: 30, transformOrigin: "bottom right"
+      });
+    });
+  </script>
+</body>
 </html>

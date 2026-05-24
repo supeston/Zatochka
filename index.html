@@ -858,23 +858,40 @@
 
       // Add Delivery Zone Polygon (strictly wraps residential complexes, excludes river, forest, Orlovka and far complexes)
       const deliveryPolygon = L.polygon([
-        [55.7215, 52.3660], // Naberezhnochelninsky Avenue / Academician Korolev Street (skirting Orlovka border near 32nd/62nd complexes)
-        [55.7280, 52.3520], // Usmanov Street / Naberezhnochelninsky Avenue intersection (covers 32nd/62nd complexes, excludes Orlovka)
-        [55.7330, 52.3420], // Corner of Usmanov Street and Komsomolsky Avenue (covers 35/36 complexes)
-        [55.7360, 52.3385], // Entrance to Chally Yar complex
-        [55.7420, 52.3360], // Western point of Chally Yar residential block (hugs the shoreline, excludes water)
-        [55.7460, 52.3420], // Northern point of Chally Yar (hugs shoreline)
+        // 1. Start at Naberezhnochelninsky Avenue near 32nd complex (excludes Orlovka)
+        [55.7278, 52.3513], // Usmanov Street / Naberezhnochelninsky Avenue intersection
+        
+        // 2. Cross over towards Usmanov / Koroleva (excludes Orlovka)
+        [55.7260, 52.3773], // Usmanov Street / Academician Korolev Street
+        
+        // 3. Move down Koroleva to Mira Avenue
+        [55.7226, 52.3831], // Academician Korolev Street / Mira Avenue
+        
+        // 4. From Koroleva/Mira, go along Druzhby Narodov to Mashinostroitelnaya (skirting Orlovka, including 60th complex and Akhmetshina)
+        [55.7198, 52.4067], // Akhmetshina / Druzhby Narodov
+        [55.7185, 52.4090], // Druzhby Narodov / Mashinostroitelnaya
+        
+        // 5. Go straight along Mashinostroitelnaya Street (outer boundary with industrial zone)
+        [55.7355, 52.4393], // Vakhitov Avenue / Mashinostroitelnaya Street
+        [55.7412, 52.4516], // Autozavodsky Avenue / Mashinostroitelnaya Street (Autozavodsky intersection)
+        
+        // 6. Go straight along Autozavodsky Avenue (straight line separating served complexes from far 50+ complexes)
+        [55.7483, 52.4398], // Autozavodsky Avenue / Moskovsky Avenue
+        [55.7547, 52.4288], // Autozavodsky Avenue / Mira Avenue
+        [55.7592, 52.4211], // Autozavodsky Avenue / Syuyumbike Avenue
+        [55.7644, 52.4124], // Autozavodsky Avenue / Chulman Avenue (boundary near Pribrezhny forest park)
+        
+        // 7. Go along Chulman Avenue (skirting Pribrezhny forest park and river)
+        [55.7584, 52.4016], // Chulman Avenue / Vakhitov Avenue
+        [55.7465, 52.3754], // Chulman Avenue / Druzhby Narodov Avenue
+        [55.7420, 52.3560], // Usmanov Street / Chulman Avenue intersection
+        
+        // 8. Chally Yar shoreline boundaries (to include Chally Yar but exclude river)
         [55.7450, 52.3520], // Eastern point of Chally Yar
-        [55.7420, 52.3560], // Usmanov Street / Chulman Avenue intersection (rejoins Chulman)
-        [55.7595, 52.3880], // Chulman Avenue / Vakhitov Avenue (follows Chulman, excluding Pribrezhny forest park)
-        [55.7663, 52.4208], // Chulman Avenue / Autozavodsky Avenue intersection (end of Chulman, excluding forest park)
-        [55.7570, 52.4300], // Autozavodsky Avenue / Syuyumbike Avenue (follows Autozavodsky Avenue exactly)
-        [55.7485, 52.4410], // Autozavodsky Avenue / Mira Avenue (follows Autozavodsky Avenue exactly)
-        [55.7410, 52.4510], // Autozavodsky Avenue / Moskovsky Avenue (follows Autozavodsky Avenue exactly)
-        [55.7360, 52.4630], // Autozavodsky Avenue / Mashinostroitelnaya Street (end of Autozavodsky Avenue, excludes far 50+ complexes)
-        [55.7280, 52.4430], // Mashinostroitelnaya Street / Vakhitov Avenue projection (follows Mashinostroitelnaya Street)
-        [55.7200, 52.4160], // Mashinostroitelnaya Street / Druzhby Narodov Avenue (covers 60th complex and Akhmetshina street)
-        [55.7140, 52.3920]  // Mashinostroitelnaya Street / Academician Korolev Street (follows Mashinostroitelnaya Street, covers 60th complex)
+        [55.7460, 52.3420], // Northern point of Chally Yar (shoreline)
+        [55.7420, 52.3360], // Western point of Chally Yar (shoreline)
+        [55.7360, 52.3385], // Entrance to Chally Yar
+        [55.7330, 52.3420]  // Corner of Usmanov Street / Komsomolsky Avenue (covers 35/36 complexes)
       ], {
         color: '#F97316',
         fillColor: '#F97316',

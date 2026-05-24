@@ -420,7 +420,7 @@
               <span class="text-xs font-bold text-brand-orange uppercase tracking-widest">Тарифы и зоны</span>
               <h3 class="text-2xl sm:text-3xl font-bold text-white mt-2 mb-6">Условия доставки</h3>
               <p class="text-sm sm:text-base text-white/80 leading-relaxed mb-6">
-                Обслуживаем <strong>Новый Город</strong> (Центральный и Автозаводский районы). Старый Город (ГЭС, ЗЯБ, Сидоровка) и другие отдаленные районы временно не обслуживаются из-за ограничений по запасу хода электросамокатов.
+                Обслуживаем центральные комплексы <strong>Нового Города</strong> (с 1 по 47). Жилые массивы Старого Города (<strong>ГЭС, ЗЯБ</strong>, Сидоровка, Замелекесье) и <strong>дальние комплексы Нового Города</strong> (50+, 60+ комплексы) временно не обслуживаются из-за дальности поездок на электросамокатах.
               </p>
               <ul class="space-y-4 text-sm sm:text-base text-white/90">
                 <li class="flex items-start gap-2.5">
@@ -860,16 +860,23 @@
       const marker = L.marker([55.736716, 52.372688], { icon: orangeIcon }).addTo(map);
       marker.bindPopup("<b>Мастерская Zаточка</b><br><span class='text-xs font-normal text-white/70'>Бульвар Касимова, 11а</span>").openPopup();
 
-      // Add Delivery Zone Circle (4.8 km radius covers Novy Gorod, excludes Old Town GES/ZYAB)
-      const deliveryCircle = L.circle([55.736716, 52.372688], {
+      // Add Delivery Zone Polygon (covers core New Town complexes, excludes Old Town GES/ZYAB and far complexes 50+)
+      const deliveryPolygon = L.polygon([
+        [55.7330, 52.3480], // West corner (boundary of 32nd complex towards GES)
+        [55.7485, 52.3395], // North-West corner (Kama River bank near 35/36 complexes)
+        [55.7610, 52.3680], // North corner (Kama River bank / 31 complex)
+        [55.7790, 52.4280], // North-East corner (Chulman Ave limit near Avtozavodsky Ave - 48 complex)
+        [55.7600, 52.4570], // Far East limit (near Yashlek Ave / Moskovsky Ave intersection)
+        [55.7480, 52.4340], // East corner (intersection of Avtozavodsky Ave and Mira Ave - 30/45 complexes)
+        [55.7260, 52.3780]  // South-West corner (Orlovka boundary along Naberezhnochelninsky Ave)
+      ], {
         color: '#F97316',
         fillColor: '#F97316',
         fillOpacity: 0.12,
-        weight: 2,
-        radius: 4800
+        weight: 2
       }).addTo(map);
       
-      deliveryCircle.bindPopup("<b>Зона экспресс-доставки</b><br><span class='text-xs font-normal text-white/70'>Новый Город</span>");
+      deliveryPolygon.bindPopup("<b>Зона экспресс-доставки</b><br><span class='text-xs font-normal text-white/70'>Центральные комплексы Нового Города (с 1 по 47)</span>");
     });
   </script>
 </body>

@@ -110,6 +110,7 @@
 
       <nav class="hidden lg:flex items-center gap-8 text-xs font-bold tracking-widest uppercase text-white/80">
         <a href="#price" class="hover:text-white smooth-transition">Прайс-лист</a>
+        <a href="#delivery" class="hover:text-white smooth-transition">Доставка</a>
         <a href="#work" class="hover:text-white smooth-transition">Наши работы</a>
         <a href="#about" class="hover:text-white smooth-transition">Оборудование</a>
         <a href="#contacts" class="hover:text-white smooth-transition">Контакты</a>
@@ -321,6 +322,126 @@
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <section id="delivery" class="py-24 md:py-32 px-4 sm:px-6 relative z-10 border-t border-white/[0.05] bg-white/5 w-full">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col items-center mb-16 md:mb-24 text-center">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-5 text-white uppercase tracking-wider">
+            Экспресс-доставка
+          </h2>
+          <div class="w-32 h-1 bg-gradient-to-r from-brand-orange via-amber-400 to-brand-yellow rounded-full shadow-lg shadow-brand-orange/20"></div>
+          <p class="mt-6 text-base sm:text-lg text-white/80 max-w-2xl font-medium leading-relaxed">
+            Вам больше не нужно тратить время на дорогу в мастерскую. Мы сами приедем, заберем ваши инструменты на заточку и привезем обратно идеально острыми.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" id="delivery-cards">
+          <!-- Card 1: Morning Pickup -->
+          <div class="delivery-card panel-premium p-8 rounded-2xl glare-effect group opacity-0 translate-y-12 glow-orange flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-brand-orange group-hover:scale-110 smooth-transition shadow-inner">
+                  <i class="fa-solid fa-clock-rotate-left text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-white uppercase tracking-wider leading-snug">Утренний рейс</h3>
+                  <span class="text-brand-orange text-xs tracking-wider font-semibold">Сбор инструментов</span>
+                </div>
+              </div>
+              <p class="text-sm sm:text-xs text-white/70 font-medium leading-relaxed">
+                Оперативно объезжаем салоны красоты, студии и парикмахерские в первой половине дня. Забираем затупившийся инструмент прямо с вашего рабочего места.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/[0.04] text-xs font-semibold text-brand-orange/80 flex items-center gap-2">
+              <i class="fa-regular fa-clock text-sm"></i>
+              <span>Забор: с 09:00 до 12:00</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Evening Delivery -->
+          <div class="delivery-card panel-premium p-8 rounded-2xl glare-effect group opacity-0 translate-y-12 glow-yellow flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-brand-yellow group-hover:scale-110 smooth-transition shadow-inner">
+                  <i class="fa-solid fa-truck-ramp-box text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-white uppercase tracking-wider leading-snug">Вечерний рейс</h3>
+                  <span class="text-brand-yellow text-xs tracking-wider font-semibold">Возврат готового</span>
+                </div>
+              </div>
+              <p class="text-sm sm:text-xs text-white/70 font-medium leading-relaxed">
+                Привозим ваши инструменты обратно в этот же вечер. Все изделия проходят тщательную заточку, дезинфекцию и упаковываются для безопасной транспортировки.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/[0.04] text-xs font-semibold text-brand-yellow/80 flex items-center gap-2">
+              <i class="fa-regular fa-clock text-sm"></i>
+              <span>Доставка: с 18:00 до 21:00</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Electric Scooters speed -->
+          <div class="delivery-card panel-premium p-8 rounded-2xl glare-effect group opacity-0 translate-y-12 glow-orange flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-4 mb-6">
+                <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-brand-orange group-hover:scale-110 smooth-transition shadow-inner">
+                  <i class="fa-solid fa-bolt text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-white uppercase tracking-wider leading-snug">Эко-доставка</h3>
+                  <span class="text-brand-orange text-xs tracking-wider font-semibold">Быстро и без пробок</span>
+                </div>
+              </div>
+              <p class="text-sm sm:text-xs text-white/70 font-medium leading-relaxed">
+                Мы передвигаемся на маневренных электросамокатах. Это позволяет полностью исключить задержки в пробках, доставлять заказы вовремя и сохранять низкую стоимость услуг.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/[0.04] text-xs font-semibold text-brand-orange/80 flex items-center gap-2">
+              <i class="fa-solid fa-kick-scooter text-sm"></i>
+              <span>100% мобильность в городе</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms and CTA -->
+        <div class="panel-premium p-8 sm:p-12 rounded-3xl glare-effect max-w-4xl mx-auto opacity-0 translate-y-12 info-card relative overflow-hidden" id="delivery-terms">
+          <div class="absolute -right-10 -bottom-10 opacity-[0.03] text-brand-orange pointer-events-none">
+            <i class="fa-solid fa-kick-scooter text-[200px]"></i>
+          </div>
+          
+          <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div class="flex-1">
+              <span class="text-xs font-bold text-brand-orange uppercase tracking-widest">Простые условия</span>
+              <h3 class="text-2xl sm:text-3xl font-bold text-white mt-2 mb-6">Тарифы и покрытие</h3>
+              <p class="text-sm sm:text-base text-white/80 leading-relaxed mb-6">
+                Обслуживаем все районы Набережных Челнов. Благодаря четкому расписанию рейсов мы предлагаем крайне выгодные условия:
+              </p>
+              <ul class="space-y-4 text-sm sm:text-base text-white/90">
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-brand-yellow mt-1 shrink-0"></i>
+                  <span>При заказе заточки <strong class="text-white">от 5 любых инструментов</strong> — доставка <span class="text-brand-yellow font-bold uppercase tracking-wider bg-brand-yellow/10 px-2 py-0.5 rounded text-xs border border-brand-yellow/20 ml-1">бесплатно</span> в обе стороны!</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i class="fa-solid fa-circle-check text-brand-yellow mt-1 shrink-0"></i>
+                  <span>При заказе менее 5 инструментов — всего <strong class="text-brand-yellow">200₽</strong> за весь цикл (утренний забор и вечерний возврат).</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="flex flex-col gap-4 sm:flex-row md:flex-col shrink-0 justify-center w-full md:w-auto">
+              <a href="https://t.me/ChelnyZatochka?text=Здравствуйте!%20Хочу%20заказать%20доставку%20инструментов%20на%20заточку" target="_blank" class="glare-effect px-8 py-5 bg-gradient-to-r from-brand-orange to-amber-500 text-white font-bold rounded-2xl text-sm uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl shadow-brand-orange/20 flex items-center justify-center gap-2.5">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Заказать доставку
+              </a>
+              <a href="tel:+79272422685" class="px-8 py-5 bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold rounded-2xl text-sm uppercase tracking-widest hover:bg-white/20 hover:border-brand-orange/30 transition-all duration-300 flex items-center justify-center gap-2.5">
+                <i class="fa-solid fa-phone"></i> Позвонить
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -610,6 +731,29 @@
         y: 0,
         duration: 1,
         stagger: 0.15,
+        ease: "expo.out"
+      });
+
+      gsap.to(".delivery-card", {
+        scrollTrigger: {
+          trigger: "#delivery-cards",
+          start: "top 90%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: "expo.out"
+      });
+
+      gsap.to("#delivery-terms", {
+        scrollTrigger: {
+          trigger: "#delivery-terms",
+          start: "top 90%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1,
         ease: "expo.out"
       });
 

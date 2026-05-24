@@ -420,7 +420,7 @@
               <span class="text-xs font-bold text-brand-orange uppercase tracking-widest">Тарифы и зоны</span>
               <h3 class="text-2xl sm:text-3xl font-bold text-white mt-2 mb-6">Условия доставки</h3>
               <p class="text-sm sm:text-base text-white/80 leading-relaxed mb-6">
-                Обслуживаем жилые комплексы <strong>Нового Города</strong> (включая Чаллы Яр и комплексы с 1 по 47). Жилые массивы Старого Города (<strong>ГЭС, ЗЯБ</strong>, Сидоровка, Замелекесье) и <strong>дальние комплексы Нового Города</strong> (50+, 60+ комплексы) временно не обслуживаются из-за ограничений по запасу хода электросамокатов.
+                Обслуживаем жилые комплексы <strong>Нового Города</strong> (включая Чаллы Яр, комплексы с 1 по 47, 56, 58, 60 комплекс, улицу Ахметшина и дома вдоль улицы Машиностроительной). Жилые массивы Старого Города (<strong>ГЭС, ЗЯБ</strong>, Сидоровка, Замелекесье), <strong>дальние комплексы Нового Города</strong> (50+, 51+, 52+, 63+, 64+, 65+ комплексы), а также частный сектор Орловки временно не обслуживаются из-за ограничений по запасу хода электросамокатов.
               </p>
               <ul class="space-y-4 text-sm sm:text-base text-white/90">
                 <li class="flex items-start gap-2.5">
@@ -856,22 +856,25 @@
       const marker = L.marker([55.736716, 52.372688], { icon: orangeIcon }).addTo(map);
       marker.bindPopup("<b>Мастерская Zаточка</b><br><span class='text-xs font-normal text-white/70'>Бульвар Касимова, 11а</span>").openPopup();
 
-      // Add Delivery Zone Polygon (strictly wraps residential complexes, excludes river, forest and Old Town/far complexes)
+      // Add Delivery Zone Polygon (strictly wraps residential complexes, excludes river, forest, Orlovka and far complexes)
       const deliveryPolygon = L.polygon([
-        [55.7180, 52.3650], // West corner (bridge over Chelna River near Paper Mill - limit towards GES)
-        [55.7280, 52.3520], // Usmanov Street / Naberezhnochelninsky Avenue intersection (covers 32/56 complexes)
+        [55.7215, 52.3660], // Naberezhnochelninsky Avenue / Academician Korolev Street (skirting Orlovka border near 32nd/62nd complexes)
+        [55.7280, 52.3520], // Usmanov Street / Naberezhnochelninsky Avenue intersection (covers 32nd/62nd complexes, excludes Orlovka)
         [55.7330, 52.3420], // Corner of Usmanov Street and Komsomolsky Avenue (covers 35/36 complexes)
         [55.7360, 52.3385], // Entrance to Chally Yar complex
         [55.7420, 52.3360], // Western point of Chally Yar residential block (hugs the shoreline, excludes water)
-        [55.7460, 52.3420], // Northern point of Chally Yar (hugs the shoreline)
+        [55.7460, 52.3420], // Northern point of Chally Yar (hugs shoreline)
         [55.7450, 52.3520], // Eastern point of Chally Yar
         [55.7420, 52.3560], // Usmanov Street / Chulman Avenue intersection (rejoins Chulman)
         [55.7595, 52.3880], // Chulman Avenue / Vakhitov Avenue (follows Chulman, excluding Pribrezhny forest park)
-        [55.7715, 52.4120], // Chulman Avenue / Avtozavodsky Avenue (end of Chulman, excluding forest park)
-        [55.7580, 52.4310], // Avtozavodsky Avenue / Syuyumbike Avenue (follows Avtozavodsky, excluding Borovetskoe forest/village)
-        [55.7460, 52.4480], // Avtozavodsky Avenue / Moskovsky Avenue (limit of served complexes, excluding 50+ complexes)
-        [55.7345, 52.4290], // Moskovsky Avenue / Vakhitov Avenue (follows Moskovsky, excluding industrial zones)
-        [55.7125, 52.3855]  // Moskovsky Avenue / Naberezhnochelninsky Avenue (near Orlovka, rejoins Chelna bridge line)
+        [55.7663, 52.4208], // Chulman Avenue / Autozavodsky Avenue intersection (end of Chulman, excluding forest park)
+        [55.7570, 52.4300], // Autozavodsky Avenue / Syuyumbike Avenue (follows Autozavodsky Avenue exactly)
+        [55.7485, 52.4410], // Autozavodsky Avenue / Mira Avenue (follows Autozavodsky Avenue exactly)
+        [55.7410, 52.4510], // Autozavodsky Avenue / Moskovsky Avenue (follows Autozavodsky Avenue exactly)
+        [55.7360, 52.4630], // Autozavodsky Avenue / Mashinostroitelnaya Street (end of Autozavodsky Avenue, excludes far 50+ complexes)
+        [55.7280, 52.4430], // Mashinostroitelnaya Street / Vakhitov Avenue projection (follows Mashinostroitelnaya Street)
+        [55.7200, 52.4160], // Mashinostroitelnaya Street / Druzhby Narodov Avenue (covers 60th complex and Akhmetshina street)
+        [55.7140, 52.3920]  // Mashinostroitelnaya Street / Academician Korolev Street (follows Mashinostroitelnaya Street, covers 60th complex)
       ], {
         color: '#F97316',
         fillColor: '#F97316',

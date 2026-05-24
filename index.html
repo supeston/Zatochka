@@ -370,17 +370,17 @@
                   <i class="fa-solid fa-truck-ramp-box text-2xl"></i>
                 </div>
                 <div>
-                  <h3 class="text-base font-bold text-white uppercase tracking-wider leading-snug">Вечерний рейс</h3>
+                  <h3 class="text-base font-bold text-white uppercase tracking-wider leading-snug">Вечерняя доставка</h3>
                   <span class="text-brand-yellow text-xs tracking-wider font-semibold">Возврат готового</span>
                 </div>
               </div>
               <p class="text-sm sm:text-xs text-white/70 font-medium leading-relaxed">
-                Привозим ваши инструменты обратно в этот же вечер. Все изделия проходят тщательную заточку, дезинфекцию и упаковываются для безопасной транспортировки.
+                Привозим готовые инструменты обратно максимально быстро, по мере завершения заточки. Время доставки зависит от текущей загруженности мастерской — мы всегда согласуем удобный час заранее.
               </p>
             </div>
             <div class="mt-6 pt-4 border-t border-white/[0.04] text-xs font-semibold text-brand-yellow/80 flex items-center gap-2">
               <i class="fa-regular fa-clock text-sm"></i>
-              <span>Доставка: с 18:00 до 21:00</span>
+              <span>Возврат: оперативно, по согласованию</span>
             </div>
           </div>
 
@@ -420,20 +420,16 @@
               <span class="text-xs font-bold text-brand-orange uppercase tracking-widest">Тарифы и зоны</span>
               <h3 class="text-2xl sm:text-3xl font-bold text-white mt-2 mb-6">Условия доставки</h3>
               <p class="text-sm sm:text-base text-white/80 leading-relaxed mb-6">
-                Обслуживаем центральные комплексы <strong>Нового Города</strong> (с 1 по 47). Жилые массивы Старого Города (<strong>ГЭС, ЗЯБ</strong>, Сидоровка, Замелекесье) и <strong>дальние комплексы Нового Города</strong> (50+, 60+ комплексы) временно не обслуживаются из-за дальности поездок на электросамокатах.
+                Обслуживаем жилые комплексы <strong>Нового Города</strong> (включая Чаллы Яр и комплексы с 1 по 47). Жилые массивы Старого Города (<strong>ГЭС, ЗЯБ</strong>, Сидоровка, Замелекесье) и <strong>дальние комплексы Нового Города</strong> (50+, 60+ комплексы) временно не обслуживаются из-за ограничений по запасу хода электросамокатов.
               </p>
               <ul class="space-y-4 text-sm sm:text-base text-white/90">
                 <li class="flex items-start gap-2.5">
                   <i class="fa-solid fa-circle-check text-brand-yellow mt-1 shrink-0"></i>
-                  <span>Для <strong class="text-white">салонов красоты и студий</strong> — доставка <span class="text-brand-yellow font-bold uppercase tracking-wider bg-brand-yellow/10 px-2 py-0.5 rounded text-xs border border-brand-yellow/20 ml-1">бесплатно</span> при заказе от <strong class="text-white">2 000₽</strong>.</span>
+                  <span><strong class="text-white">Бесплатная доставка для всех клиентов</strong> — при сумме заказа от <strong class="text-brand-yellow font-bold uppercase tracking-wider bg-brand-yellow/10 px-2 py-0.5 rounded text-xs border border-brand-yellow/20 ml-1">2 000₽</strong> (забор и возврат).</span>
                 </li>
                 <li class="flex items-start gap-2.5">
                   <i class="fa-solid fa-circle-check text-brand-yellow mt-1 shrink-0"></i>
-                  <span>Для <strong class="text-white">частных мастеров и клиентов</strong> — доставка <span class="text-brand-yellow font-bold uppercase tracking-wider bg-brand-yellow/10 px-2 py-0.5 rounded text-xs border border-brand-yellow/20 ml-1">бесплатно</span> при заказе от <strong class="text-white">1 000₽</strong>.</span>
-                </li>
-                <li class="flex items-start gap-2.5">
-                  <i class="fa-solid fa-circle-check text-brand-yellow mt-1 shrink-0"></i>
-                  <span>В остальных случаях доставка в обе стороны (забор + возврат) — всего <strong class="text-brand-yellow">250₽</strong>.</span>
+                  <span>При заказе на меньшую сумму стоимость доставки в обе стороны (забор + возврат) составляет всего <strong class="text-brand-yellow">250₽</strong>.</span>
                 </li>
               </ul>
             </div>
@@ -837,10 +833,10 @@
 
       // Initialize Leaflet Map
       const map = L.map('map', {
-        center: [55.736716, 52.372688],
+        center: [55.743, 52.390],
         zoom: 12,
         zoomControl: true,
-        scrollWheelZoom: false
+        scrollWheelZoom: true
       });
 
       // Add Tile Layer
@@ -860,15 +856,22 @@
       const marker = L.marker([55.736716, 52.372688], { icon: orangeIcon }).addTo(map);
       marker.bindPopup("<b>Мастерская Zаточка</b><br><span class='text-xs font-normal text-white/70'>Бульвар Касимова, 11а</span>").openPopup();
 
-      // Add Delivery Zone Polygon (covers core New Town complexes, excludes Old Town GES/ZYAB and far complexes 50+)
+      // Add Delivery Zone Polygon (strictly wraps residential complexes, excludes river, forest and Old Town/far complexes)
       const deliveryPolygon = L.polygon([
-        [55.7330, 52.3480], // West corner (boundary of 32nd complex towards GES)
-        [55.7485, 52.3395], // North-West corner (Kama River bank near 35/36 complexes)
-        [55.7610, 52.3680], // North corner (Kama River bank / 31 complex)
-        [55.7790, 52.4280], // North-East corner (Chulman Ave limit near Avtozavodsky Ave - 48 complex)
-        [55.7600, 52.4570], // Far East limit (near Yashlek Ave / Moskovsky Ave intersection)
-        [55.7480, 52.4340], // East corner (intersection of Avtozavodsky Ave and Mira Ave - 30/45 complexes)
-        [55.7260, 52.3780]  // South-West corner (Orlovka boundary along Naberezhnochelninsky Ave)
+        [55.7180, 52.3650], // West corner (bridge over Chelna River near Paper Mill - limit towards GES)
+        [55.7280, 52.3520], // Usmanov Street / Naberezhnochelninsky Avenue intersection (covers 32/56 complexes)
+        [55.7330, 52.3420], // Corner of Usmanov Street and Komsomolsky Avenue (covers 35/36 complexes)
+        [55.7360, 52.3385], // Entrance to Chally Yar complex
+        [55.7420, 52.3360], // Western point of Chally Yar residential block (hugs the shoreline, excludes water)
+        [55.7460, 52.3420], // Northern point of Chally Yar (hugs the shoreline)
+        [55.7450, 52.3520], // Eastern point of Chally Yar
+        [55.7420, 52.3560], // Usmanov Street / Chulman Avenue intersection (rejoins Chulman)
+        [55.7595, 52.3880], // Chulman Avenue / Vakhitov Avenue (follows Chulman, excluding Pribrezhny forest park)
+        [55.7715, 52.4120], // Chulman Avenue / Avtozavodsky Avenue (end of Chulman, excluding forest park)
+        [55.7580, 52.4310], // Avtozavodsky Avenue / Syuyumbike Avenue (follows Avtozavodsky, excluding Borovetskoe forest/village)
+        [55.7460, 52.4480], // Avtozavodsky Avenue / Moskovsky Avenue (limit of served complexes, excluding 50+ complexes)
+        [55.7345, 52.4290], // Moskovsky Avenue / Vakhitov Avenue (follows Moskovsky, excluding industrial zones)
+        [55.7125, 52.3855]  // Moskovsky Avenue / Naberezhnochelninsky Avenue (near Orlovka, rejoins Chelna bridge line)
       ], {
         color: '#F97316',
         fillColor: '#F97316',
@@ -876,7 +879,7 @@
         weight: 2
       }).addTo(map);
       
-      deliveryPolygon.bindPopup("<b>Зона экспресс-доставки</b><br><span class='text-xs font-normal text-white/70'>Центральные комплексы Нового Города (с 1 по 47)</span>");
+      deliveryPolygon.bindPopup("<b>Зона экспресс-доставки</b><br><span class='text-xs font-normal text-white/70'>Обслуживаемые комплексы Нового Города (включая Чаллы Яр)</span>");
     });
   </script>
 </body>

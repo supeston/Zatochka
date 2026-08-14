@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://supeston.github.io/Zatochka/sitemap.xml
+
+# Specific Crawlers Optimization
+User-agent: Yandex
+Allow: /
+
+User-agent: Googlebot
+Allow: /

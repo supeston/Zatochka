@@ -1,0 +1,21 @@
+{
+  "name": "Zаточка — Студия заточки инструмента в Набережных Челнах",
+  "short_name": "Zаточка Челны",
+  "description": "Профессиональная заточка маникюрного, парикмахерского и бытового инструмента в Набережных Челнах. Доставка по всем комплексам.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#074D59",
+  "theme_color": "#074D59",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

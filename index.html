@@ -2,115 +2,43 @@
 <html lang="ru" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zаточка - Профессиональная заточка</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Russo+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'brand-yellow': '#FACC15',
-            'brand-orange': '#F97316',
-            'site-blue': '#074D59',
-            'site-blue-dark': '#032E36',
-          },
-          fontFamily: {
-            sans: ['Montserrat', 'sans-serif'],
-            display: ['"Russo One"', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      background-color: #074D59;
-      background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E"),
-        radial-gradient(circle at 50% 0%, #032E36 0%, #074D59 70%);
-      background-attachment: fixed;
-      color: #F3F4F6;
-      -webkit-font-smoothing: antialiased;
-    }
-    .text-metallic {
-      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 20%, #CBD5E1 70%, #64748B 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .panel-premium {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.14) 100%);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      box-shadow:
-        inset 0px 1px 2px rgba(255, 255, 255, 0.2),
-        0px 15px 30px rgba(0, 0, 0, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-    .glare-effect {
-      position: relative;
-      overflow: hidden;
-    }
-    .glare-effect::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -150%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
-      transform: skewX(-30deg);
-      transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .glare-effect:hover::after {
-      left: 250%;
-    }
-    .scrollbar-hidden::-webkit-scrollbar {
-      display: none;
-    }
-    .scrollbar-hidden {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-    .glow-orange {
-      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .glow-orange:hover {
-      box-shadow: 0 0 35px rgba(249, 115, 22, 0.3);
-      border-color: rgba(249, 115, 22, 0.4);
-      transform: translateY(-2px);
-    }
-    .glow-yellow {
-      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .glow-yellow:hover {
-      box-shadow: 0 0 35px rgba(250, 204, 21, 0.3);
-      border-color: rgba(250, 204, 21, 0.4);
-      transform: translateY(-2px);
-    }
-    .smooth-transition {
-      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-  </style>
-</head>
-<body class="min-h-screen relative font-sans overflow-x-hidden selection:bg-brand-orange/40 selection:text-white w-full">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#074D59" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Профессиональная заточка парикмахерского, маникюрного и бытового инструмента в Набережных Челнах. Ремонт оборудования, экспресс-доставка на электросамокатах." />
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Zаточка — Профессиональная заточка инструмента" />
+  <meta property="og:description" content="Высокоточная заточка инструмента и ремонт оборудования в Набережных Челнах. Экспресс-доставка." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ru_RU" />
 
-  <header class="fixed w-full top-0 z-50 px-4 sm:px-8 py-4 bg-white/10 backdrop-blur-xl border-b border-white/[0.08] transition-all duration-500 opacity-0 -translate-y-full" id="header">
+  <title>Zаточка - Профессиональная заточка</title>
+
+  <!-- SVG Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23074D59'/%3E%3Cpath d='M8 9h16l-12 14h12' stroke='%23FACC15' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" type="image/svg+xml" />
+
+  <!-- Preconnect & Google Fonts with display=swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&family=Russo+One&display=swap" rel="stylesheet" />
+
+  <!-- Ultra-Fast Standalone Stylesheet (Zero Runtime Compilers) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-screen relative font-sans overflow-x-hidden w-full select-none">
+
+  <!-- Header -->
+  <header class="fixed w-full top-0 z-50 px-4 sm:px-8 py-4 bg-white/10 backdrop-blur-xl border-b border-white/[0.08] transition-all duration-500" id="header">
     <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
-      <a href="#hero" class="flex items-center group shrink-0">
+      <a href="#hero" class="flex items-center group shrink-0" aria-label="Zаточка главная">
         <span class="text-2xl sm:text-4xl font-black italic tracking-tighter font-display text-white select-none whitespace-nowrap pl-1" id="logo-container">
           <span class="logo-letter text-brand-yellow smooth-transition inline-block pr-[2px]">Z</span><span class="logo-letter inline-block">А</span><span class="logo-letter inline-block">Т</span><span class="logo-letter inline-block">О</span><span class="logo-letter inline-block">Ч</span><span class="logo-letter inline-block">К</span><span class="logo-letter inline-block">А</span>
         </span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-8 text-xs font-bold tracking-widest uppercase text-white/80">
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-bold tracking-widest uppercase text-white/80" aria-label="Основная навигация">
         <a href="#price" class="hover:text-white smooth-transition">Прайс-лист</a>
         <a href="#delivery" class="hover:text-white smooth-transition">Доставка</a>
         <a href="#work" class="hover:text-white smooth-transition">Наши работы</a>
@@ -120,17 +48,17 @@
 
       <div class="flex items-center gap-2 sm:gap-4 shrink-0">
         <div class="flex gap-2">
-          <a href="https://t.me/ChelnyZatochka" target="_blank" class="bg-white/10 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow/40 smooth-transition shadow-lg">
+          <a href="https://t.me/ChelnyZatochka" target="_blank" rel="noopener noreferrer" class="bg-white/10 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl border border-white/10 text-white hover:text-brand-yellow hover:border-brand-yellow/40 smooth-transition shadow-lg" aria-label="Написать в Telegram">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
           </a>
-          <a href="https://go.2gis.com/J7Qd1" target="_blank" class="bg-white/10 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl border border-white/10 text-white hover:text-brand-orange hover:border-brand-orange/40 smooth-transition shadow-lg">
-            <i class="fa-solid fa-map-location-dot text-sm"></i>
+          <a href="https://go.2gis.com/J7Qd1" target="_blank" rel="noopener noreferrer" class="bg-white/10 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl border border-white/10 text-white hover:text-brand-orange hover:border-brand-orange/40 smooth-transition shadow-lg" aria-label="Открыть в 2ГИС">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </a>
         </div>
 
-        <a href="tel:+79272422685" class="flex items-center gap-2 glare-effect panel-premium px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition-all duration-500 hover:border-brand-orange/30 group">
+        <a href="tel:+79272422685" class="flex items-center gap-2 glare-effect panel-premium px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl transition-all duration-500 hover:border-brand-orange/30 group" aria-label="Позвонить">
           <div class="bg-gradient-to-br from-brand-orange to-amber-500 text-white p-1.5 sm:p-2 rounded-lg phone-pulse shadow-lg shadow-brand-orange/10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="sm:w-3.5 sm:h-3.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72(12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="sm:w-3.5 sm:h-3.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
           </div>
           <span class="font-bold text-[11px] sm:text-xs tracking-wider text-white group-hover:text-brand-orange smooth-transition hidden md:inline-block">8 927 242-26-85</span>
         </a>
@@ -139,6 +67,7 @@
   </header>
 
   <main class="w-full select-none">
+    <!-- Hero Section -->
     <section class="relative min-h-screen flex flex-col items-center justify-center pt-24 px-4 overflow-hidden w-full" id="hero">
       <div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white blur-[140px] rounded-full"></div>
@@ -146,7 +75,7 @@
       </div>
 
       <div class="max-w-5xl mx-auto text-center relative z-10 w-full flex flex-col items-center flex-1 justify-center mb-10">
-        <div class="mb-8 mx-auto w-fit opacity-0 translate-y-12" id="hero-title">
+        <div class="mb-8 mx-auto w-fit" id="hero-title">
           <h1 class="text-[clamp(1.8rem,7.5vw,5.5rem)] mt-6 leading-[1.1] font-black tracking-tight flex flex-col items-center select-none font-display w-full">
             <span class="text-white drop-shadow-xl uppercase pb-1">Профессиональная</span>
             <span class="mt-4 px-6 py-4 sm:px-10 sm:py-5 bg-white/10 border border-white/15 rounded-3xl backdrop-blur-md shadow-2xl inline-flex items-center justify-center text-white italic tracking-wide text-[clamp(2.2rem,8vw,6rem)] font-black whitespace-nowrap">
@@ -155,11 +84,11 @@
           </h1>
         </div>
 
-        <p class="text-base sm:text-xl md:text-2xl text-white font-medium max-w-3xl mx-auto mb-12 leading-relaxed opacity-0" id="hero-subtitle">
+        <p class="text-base sm:text-xl md:text-2xl text-white font-medium max-w-3xl mx-auto mb-12 leading-relaxed" id="hero-subtitle">
           Высокоточная заточка инструмента для салонов красоты, парикмахерских, охотников и домашнего быта. Ремонт и обслуживание professional оборудования.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-5 justify-center items-center w-full sm:w-auto opacity-0" id="hero-cta">
+        <div class="flex flex-col sm:flex-row gap-5 justify-center items-center w-full sm:w-auto" id="hero-cta">
           <a href="#price" class="glare-effect px-10 py-5 bg-gradient-to-r from-brand-orange to-amber-500 text-white font-bold rounded-2xl text-base uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all duration-500 shadow-xl shadow-brand-orange/20 w-full sm:w-64 text-center h-20 flex items-center justify-center">
             Смотреть прайс
           </a>
@@ -169,8 +98,9 @@
         </div>
       </div>
 
+      <!-- Hero Benefits -->
       <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4 w-full relative z-10 mb-12" id="hero-benefits">
-        <div class="benefit-card panel-premium p-6 sm:p-7 rounded-2xl flex flex-col items-center text-center group opacity-0 translate-y-8 transition-colors duration-300 hover:bg-white/15">
+        <div class="benefit-card panel-premium p-6 sm:p-7 rounded-2xl flex flex-col items-center text-center group transition-colors duration-300 hover:bg-white/15">
           <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-brand-yellow mb-4 group-hover:scale-110 smooth-transition overflow-hidden">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" id="icon-clock">
               <circle cx="12" cy="12" r="9" stroke-dasharray="60" stroke-dashoffset="60" id="clock-circle"/>
@@ -181,7 +111,7 @@
           <p class="text-sm sm:text-xs text-white/70 font-medium leading-relaxed">Безупречное владение технологиями ручной и станочной заточки</p>
         </div>
 
-        <div class="benefit-card panel-premium p-6 sm:p-7 rounded-2xl flex flex-col items-center text-center group opacity-0 translate-y-8 transition-colors duration-300 hover:bg-white/15">
+        <div class="benefit-card panel-premium p-6 sm:p-7 rounded-2xl flex flex-col items-center text-center group transition-colors duration-300 hover:bg-white/15">
           <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-brand-yellow mb-4 group-hover:scale-110 smooth-transition overflow-hidden">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" id="icon-check">
               <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke-dasharray="80" stroke-dashoffset="80" id="check-board"/>
@@ -192,7 +122,7 @@
           <p class="text-sm sm:text-xs text-white/70 font-medium leading-relaxed">Доведенный до идеала инструмент для сотен постоянных клиентов</p>
         </div>
 
-        <div class="benefit-card panel-premium p-6 sm:p-7 rounded-2xl flex flex-col items-center text-center group opacity-0 translate-y-8 transition-colors duration-300 hover:bg-white/15">
+        <div class="benefit-card panel-premium p-6 sm:p-7 rounded-2xl flex flex-col items-center text-center group transition-colors duration-300 hover:bg-white/15">
           <div class="p-3 bg-white/5 rounded-xl border border-white/10 text-brand-yellow mb-3 group-hover:scale-110 smooth-transition overflow-hidden">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" id="icon-shield">
               <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-dasharray="20" stroke-dashoffset="20" id="shield-check"/>
@@ -200,11 +130,11 @@
             </svg>
           </div>
           <div class="flex items-center justify-center gap-0.5 mb-2 h-5" id="stars-container">
-            <svg class="reputation-star w-4 h-4 text-brand-yellow fill-current opacity-0" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-            <svg class="reputation-star w-4 h-4 text-brand-yellow fill-current opacity-0" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-            <svg class="reputation-star w-4 h-4 text-brand-yellow fill-current opacity-0" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-            <svg class="reputation-star w-4 h-4 text-brand-yellow fill-current opacity-0" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-            <svg class="reputation-star w-4 h-4 text-brand-yellow fill-current opacity-0" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg class="reputation-star w-4 h-4 text-brand-yellow fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg class="reputation-star w-4 h-4 text-brand-yellow fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg class="reputation-star w-4 h-4 text-brand-yellow fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg class="reputation-star w-4 h-4 text-brand-yellow fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+            <svg class="reputation-star w-4 h-4 text-brand-yellow fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
           </div>
           <h3 class="text-xl sm:text-lg font-bold text-white mb-1">Доверие топ-мастеров</h3>
           <p class="text-sm sm:text-xs text-white/70 font-medium leading-relaxed">Доверие ведущих бьюти-мастеров и профессионалов города</p>
@@ -212,6 +142,7 @@
       </div>
     </section>
 
+    <!-- Price Section -->
     <section id="price" class="py-24 md:py-32 px-4 sm:px-6 relative z-10 border-t border-white/[0.05] bg-white/5 w-full">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col items-center mb-16 md:mb-24 text-center">
@@ -223,7 +154,8 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="price-grid">
 
-          <div class="price-category panel-premium p-7 sm:p-9 rounded-2xl glare-effect relative group opacity-0 translate-y-12 glow-orange">
+          <!-- Category 1 -->
+          <div class="price-category panel-premium p-7 sm:p-9 rounded-2xl glare-effect relative group glow-orange">
             <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.06] transition-opacity duration-700 pointer-events-none text-brand-orange">
               <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" x2="8.12" y1="4" y2="15.88"/><line x1="14.47" x2="20" y1="14.48" y2="20"/><line x1="8.12" x2="12" y1="8.12" y2="12"/></svg>
             </div>
@@ -259,7 +191,8 @@
             </div>
           </div>
 
-          <div class="price-category panel-premium p-7 sm:p-9 rounded-2xl glare-effect relative group opacity-0 translate-y-12 glow-yellow">
+          <!-- Category 2 -->
+          <div class="price-category panel-premium p-7 sm:p-9 rounded-2xl glare-effect relative group glow-yellow">
             <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.06] transition-opacity duration-700 pointer-events-none text-brand-yellow">
               <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             </div>
@@ -287,7 +220,8 @@
             </div>
           </div>
 
-          <div class="price-category panel-premium p-7 sm:p-9 rounded-2xl glare-effect relative group opacity-0 translate-y-12 glow-orange">
+          <!-- Category 3 -->
+          <div class="price-category panel-premium p-7 sm:p-9 rounded-2xl glare-effect relative group glow-orange">
             <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.06] transition-opacity duration-700 pointer-events-none text-brand-orange">
               <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="m15 12-8.373 8.373a1 1 0 1 1-1.414-1.414L13.586 10.586"/><path d="m18.293 11.707 1.414-1.414a1 1 0 0 0 0-1.414l-7.586-7.586a1 1 0 0 0-1.414 0L9.293 2.707a1 1 0 0 0 0 1.414L16.879 11.707a1 1 0 0 0 1.414 0Z"/></svg>
             </div>
@@ -327,6 +261,7 @@
       </div>
     </section>
 
+    <!-- Delivery Section -->
     <section id="delivery" class="py-24 md:py-32 px-4 sm:px-6 relative z-10 border-t border-white/[0.05] bg-white/5 w-full">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col items-center mb-16 md:mb-24 text-center">
@@ -341,11 +276,11 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" id="delivery-cards">
           <!-- Card 1: Morning Pickup -->
-          <div class="delivery-card panel-premium p-8 rounded-2xl glare-effect group opacity-0 translate-y-12 glow-orange flex flex-col justify-between">
+          <div class="delivery-card panel-premium p-8 rounded-2xl glare-effect group glow-orange flex flex-col justify-between">
             <div>
               <div class="flex items-center gap-4 mb-6">
                 <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-brand-orange group-hover:scale-110 smooth-transition shadow-inner">
-                  <i class="fa-solid fa-clock-rotate-left text-2xl"></i>
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
                 </div>
                 <div>
                   <h3 class="text-base font-bold text-white uppercase tracking-wider leading-snug">Утренний рейс</h3>
@@ -357,17 +292,17 @@
               </p>
             </div>
             <div class="mt-6 pt-4 border-t border-white/[0.04] text-xs font-semibold text-brand-orange/80 flex items-center gap-2">
-              <i class="fa-regular fa-clock text-sm"></i>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               <span>Забор: с 09:00 до 12:00</span>
             </div>
           </div>
 
           <!-- Card 2: Evening Delivery -->
-          <div class="delivery-card panel-premium p-8 rounded-2xl glare-effect group opacity-0 translate-y-12 glow-yellow flex flex-col justify-between">
+          <div class="delivery-card panel-premium p-8 rounded-2xl glare-effect group glow-yellow flex flex-col justify-between">
             <div>
               <div class="flex items-center gap-4 mb-6">
                 <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-brand-yellow group-hover:scale-110 smooth-transition shadow-inner">
-                  <i class="fa-solid fa-truck-ramp-box text-2xl"></i>
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
                 </div>
                 <div>
                   <h3 class="text-base font-bold text-white uppercase tracking-wider leading-snug">Вечерняя доставка</h3>
@@ -379,17 +314,17 @@
               </p>
             </div>
             <div class="mt-6 pt-4 border-t border-white/[0.04] text-xs font-semibold text-brand-yellow/80 flex items-center gap-2">
-              <i class="fa-regular fa-clock text-sm"></i>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               <span>Возврат: оперативно, по согласованию</span>
             </div>
           </div>
 
-          <!-- Card 3: Electric Scooters speed -->
-          <div class="delivery-card panel-premium p-8 rounded-2xl glare-effect group opacity-0 translate-y-12 glow-orange flex flex-col justify-between">
+          <!-- Card 3: Eco Delivery -->
+          <div class="delivery-card panel-premium p-8 rounded-2xl glare-effect group glow-orange flex flex-col justify-between">
             <div>
               <div class="flex items-center gap-4 mb-6">
                 <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-brand-orange group-hover:scale-110 smooth-transition shadow-inner">
-                  <i class="fa-solid fa-bolt text-2xl"></i>
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
                 <div>
                   <h3 class="text-base font-bold text-white uppercase tracking-wider leading-snug">Эко-доставка</h3>
@@ -401,19 +336,19 @@
               </p>
             </div>
             <div class="mt-6 pt-4 border-t border-white/[0.04] text-xs font-semibold text-brand-orange/80 flex items-center gap-2">
-              <i class="fa-solid fa-kick-scooter text-sm"></i>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="4" cy="19" r="2"/><circle cx="20" cy="19" r="2"/><path d="M4 17h16"/><path d="M18 17l-4-12H9"/><path d="M9 5h5"/></svg>
               <span>100% мобильность в городе</span>
             </div>
           </div>
         </div>
 
         <!-- Terms and Map Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto opacity-0 translate-y-12" id="delivery-terms">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto" id="delivery-terms">
           
           <!-- Left side: Terms -->
           <div class="lg:col-span-7 panel-premium p-8 sm:p-10 rounded-3xl glare-effect flex flex-col justify-between relative overflow-hidden">
             <div class="absolute -right-10 -bottom-10 opacity-[0.03] text-brand-orange pointer-events-none">
-              <i class="fa-solid fa-kick-scooter text-[200px]"></i>
+              <svg class="w-[200px] h-[200px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="4" cy="19" r="2"/><circle cx="20" cy="19" r="2"/><path d="M4 17h16"/><path d="M18 17l-4-12H9"/><path d="M9 5h5"/></svg>
             </div>
             
             <div class="relative z-10">
@@ -424,11 +359,11 @@
               </p>
               <ul class="space-y-4 text-sm sm:text-base text-white/90">
                 <li class="flex items-start gap-2.5">
-                  <i class="fa-solid fa-circle-check text-brand-yellow mt-1 shrink-0"></i>
+                  <svg class="w-5 h-5 text-brand-yellow mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
                   <span><strong class="text-white">Бесплатная доставка для всех клиентов</strong> — при сумме заказа от <strong class="text-brand-yellow font-bold uppercase tracking-wider bg-brand-yellow/10 px-2 py-0.5 rounded text-xs border border-brand-yellow/20 ml-1">2 000₽</strong> (забор и возврат).</span>
                 </li>
                 <li class="flex items-start gap-2.5">
-                  <i class="fa-solid fa-circle-check text-brand-yellow mt-1 shrink-0"></i>
+                  <svg class="w-5 h-5 text-brand-yellow mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
                   <span>При заказе на меньшую сумму стоимость доставки в обе стороны (забор + возврат) составляет всего <strong class="text-brand-yellow">250₽</strong>.</span>
                 </li>
               </ul>
@@ -436,56 +371,17 @@
             
             <div class="mt-8 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row gap-4 w-full justify-start items-center">
               <a href="tel:+79272422685" class="glare-effect w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-brand-orange to-amber-500 text-white font-bold rounded-2xl text-sm uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl shadow-brand-orange/20 flex items-center justify-center gap-2.5 min-w-[240px]">
-                <i class="fa-solid fa-phone text-lg"></i> Вызвать курьера
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Вызвать курьера
               </a>
             </div>
           </div>
 
-          <!-- Right side: Map -->
+          <!-- Right side: Map Container -->
           <div class="lg:col-span-5 panel-premium p-4 rounded-3xl glare-effect flex flex-col h-[380px] lg:h-auto min-h-[380px] relative overflow-hidden">
             <div class="w-full h-full rounded-2xl overflow-hidden border border-white/10 relative" id="delivery-map-container" style="background-color: #032E36;">
               <!-- Map Target Div -->
-              <div id="map" class="w-full h-full z-10"></div>
-              
-              <!-- Subtle custom style overlay to blend map tiles with our dark theme -->
-              <style>
-                .leaflet-container {
-                  background: #032E36 !important;
-                }
-                /* Custom styles for Leaflet elements */
-                .leaflet-tile-container {
-                  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
-                }
-                .leaflet-bar {
-                  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-                  box-shadow: none !important;
-                }
-                .leaflet-bar a {
-                  background-color: rgba(7, 77, 89, 0.85) !important;
-                  color: #fff !important;
-                  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-                }
-                .leaflet-bar a:hover {
-                  background-color: #F97316 !important;
-                  color: #fff !important;
-                }
-                .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-                  background: rgba(7, 77, 89, 0.95) !important;
-                  color: #fff !important;
-                  backdrop-filter: blur(10px);
-                  border: 1px solid rgba(255, 255, 255, 0.15);
-                  box-shadow: 0 10px 25px rgba(0,0,0,0.3) !important;
-                }
-                .leaflet-popup-content {
-                  font-family: 'Montserrat', sans-serif !important;
-                  font-weight: 600;
-                  font-size: 13px;
-                }
-                .custom-div-icon {
-                  background: none !important;
-                  border: none !important;
-                }
-              </style>
+              <div id="map" class="w-full h-full z-10" style="touch-action: pan-x pan-y;"></div>
             </div>
           </div>
           
@@ -494,6 +390,7 @@
       </div>
     </section>
 
+    <!-- Work Video Section -->
     <section class="py-24 md:py-32 px-4 relative overflow-hidden border-t border-white/[0.05] w-full" id="work" style="background: radial-gradient(ellipse at center, #053F4A 0%, #0A6B7E 80%);">
       <div class="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-site-blue to-transparent pointer-events-none z-20 hidden md:block"></div>
       <div class="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-site-blue to-transparent pointer-events-none z-20 hidden md:block"></div>
@@ -506,20 +403,19 @@
           <div class="h-[1px] flex-1 bg-gradient-to-r from-brand-orange/20 via-amber-400/10 to-transparent rounded-full hidden sm:block"></div>
         </div>
 
+        <!-- Optimized Touch Video Carousel with posters & lazy loading -->
         <div class="flex overflow-x-auto gap-6 sm:gap-8 pb-10 snap-x snap-mandatory scrollbar-hidden scroll-smooth w-full" id="video-track">
-          <div class="video-container snap-center shrink-0" data-src="./videos/video1.mp4"></div>
-          <div class="video-container snap-center shrink-0" data-src="./videos/video2.mp4"></div>
-          <div class="video-container snap-center shrink-0" data-src="./videos/video3.mp4"></div>
-          <div class="video-container snap-center shrink-0" data-src="./videos/video4.mp4"></div>
-          <div class="video-container snap-center shrink-0" data-src="./videos/video5.mp4"></div>
+          <div class="video-card-container snap-center shrink-0" data-src="./videos/video1.mp4" data-poster="./videos/poster1.jpg"></div>
+          <div class="video-card-container snap-center shrink-0" data-src="./videos/video2.mp4" data-poster="./videos/poster2.jpg"></div>
         </div>
       </div>
     </section>
 
+    <!-- Equipment & About Section -->
     <section id="about" class="py-24 md:py-32 px-4 sm:px-6 relative overflow-hidden border-t border-white/[0.05] w-full" style="background: radial-gradient(circle at 50% 100%, #053F4A 0%, #0A6B7E 60%);">
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch w-full">
 
-        <div class="panel-premium p-8 md:p-14 rounded-3xl glare-effect border-l-4 border-l-brand-orange flex flex-col justify-center info-card opacity-0 translate-y-12">
+        <div class="panel-premium p-8 md:p-14 rounded-3xl glare-effect border-l-4 border-l-brand-orange flex flex-col justify-center info-card">
           <div class="flex items-center gap-4 mb-8">
             <div class="text-brand-orange bg-brand-orange/5 p-3 rounded-xl border border-brand-orange/10">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
@@ -531,7 +427,8 @@
           </p>
         </div>
 
-        <div id="contacts" class="panel-premium p-8 md:p-14 rounded-3xl glare-effect flex flex-col justify-between info-card opacity-0 translate-y-12 transition-all duration-500 bg-white/5 relative">
+        <!-- Contacts Card -->
+        <div id="contacts" class="panel-premium p-8 md:p-14 rounded-3xl glare-effect flex flex-col justify-between info-card transition-all duration-500 bg-white/5 relative">
           <h2 class="text-2xl md:text-3xl font-black uppercase text-white tracking-wider mb-10">Контакты</h2>
 
           <div class="space-y-10 flex-1">
@@ -567,20 +464,20 @@
           </div>
 
           <div class="pt-10 mt-10 border-t border-white/[0.05] grid grid-cols-2 gap-3 sm:gap-4 w-full">
-            <a href="https://t.me/ChelnyZatochka" target="_blank" class="flex items-center justify-center gap-2 bg-white/5 px-2.5 py-4 rounded-xl border border-white/10 hover:border-brand-yellow/40 smooth-transition text-xs font-bold tracking-widest uppercase hover:scale-[1.02] text-white">
+            <a href="https://t.me/ChelnyZatochka" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-white/5 px-2.5 py-4 rounded-xl border border-white/10 hover:border-brand-yellow/40 smooth-transition text-xs font-bold tracking-widest uppercase hover:scale-[1.02] text-white">
               <svg class="w-4 h-4 fill-current text-brand-yellow shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
               <span class="truncate">Написать</span>
             </a>
-            <a href="https://t.me/zatochkaK" target="_blank" class="flex items-center justify-center gap-2 bg-white/5 px-2.5 py-4 rounded-xl border border-white/10 hover:border-brand-yellow/40 smooth-transition text-xs font-bold tracking-widest uppercase hover:scale-[1.02] text-white">
+            <a href="https://t.me/zatochkaK" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-white/5 px-2.5 py-4 rounded-xl border border-white/10 hover:border-brand-yellow/40 smooth-transition text-xs font-bold tracking-widest uppercase hover:scale-[1.02] text-white">
               <svg class="w-4 h-4 fill-current text-brand-yellow shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.68c.223-.198-.054-.31-.346-.11l-6.4 4.03-2.76-.864c-.602-.188-.614-.602.126-.893l10.78-4.155c.498-.186.938.118.78.837z"/></svg>
               <span class="truncate">Канал</span>
             </a>
-            <a href="https://max.ru/u/f9LHodD0cOI6eF2fqc0EAxuzP-8Y0REIDecsMGmjJj0oPTIQYLWaEU1smpE" target="_blank" class="flex items-center justify-center gap-2 bg-white/5 px-2.5 py-4 rounded-xl border border-white/10 hover:border-brand-orange/40 smooth-transition text-xs font-bold tracking-widest uppercase hover:scale-[1.02] text-white">
-              <img src="https://max.ru/favicon.ico" alt="Max" class="w-4 h-4 invert object-contain opacity-80 shrink-0" />
+            <a href="https://max.ru/u/f9LHodD0cOI6eF2fqc0EAxuzP-8Y0REIDecsMGmjJj0oPTIQYLWaEU1smpE" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-white/5 px-2.5 py-4 rounded-xl border border-white/10 hover:border-brand-orange/40 smooth-transition text-xs font-bold tracking-widest uppercase hover:scale-[1.02] text-white">
+              <svg class="w-4 h-4 text-brand-orange shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               <span class="truncate">Мы в MAX</span>
             </a>
-            <a href="https://go.2gis.com/J7Qd1" target="_blank" class="flex items-center justify-center gap-2 bg-white/5 px-2.5 py-4 rounded-xl border border-white/10 hover:border-brand-orange/40 smooth-transition text-xs font-bold tracking-widest uppercase hover:scale-[1.02] text-white">
-              <i class="fa-solid fa-map-location-dot text-brand-orange text-sm shrink-0"></i>
+            <a href="https://go.2gis.com/J7Qd1" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-white/5 px-2.5 py-4 rounded-xl border border-white/10 hover:border-brand-orange/40 smooth-transition text-xs font-bold tracking-widest uppercase hover:scale-[1.02] text-white">
+              <svg class="w-4 h-4 text-brand-orange shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <span class="truncate">Мы в 2ГИС</span>
             </a>
           </div>
@@ -590,9 +487,10 @@
     </section>
   </main>
 
+  <!-- Schedule Modal -->
   <div id="modal-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none z-50 transition-opacity duration-500 flex items-center justify-center p-4">
     <div id="schedule-modal" class="w-full max-w-sm panel-premium rounded-3xl p-6 sm:p-8 opacity-0 scale-95 transition-all duration-500 relative bg-[#0A6B7E] border border-white/20 shadow-2xl">
-      <button id="schedule-close" class="absolute top-4 right-4 text-white/50 hover:text-white smooth-transition text-2xl w-8 h-8 flex items-center justify-center rounded-full bg-white/5 border border-white/10">&times;</button>
+      <button id="schedule-close" class="absolute top-4 right-4 text-white/50 hover:text-white smooth-transition text-2xl w-8 h-8 flex items-center justify-center rounded-full bg-white/5 border border-white/10" aria-label="Закрыть модальное окно">&times;</button>
       <h4 class="text-xs font-bold text-white/60 uppercase tracking-widest mb-6">График работы</h4>
       <div class="text-white text-base space-y-3 font-medium">
         <div class="flex items-center justify-between border-b border-white/[0.06] pb-2"><span>Пн</span><span class="text-white font-black bg-white/10 px-3 py-1 rounded text-sm">10:00 – 15:00</span></div>
@@ -614,37 +512,43 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <footer class="py-12 text-center border-t border-white/[0.05] bg-white/5 w-full">
     <p class="text-xs text-white/70 max-w-md mx-auto px-6 leading-relaxed tracking-wider font-medium">
       © <span id="year"></span> Zаточка. Профессиональная заточка парикмахерского, маникюрного и бытового инструмента в Набережных Челнах.
     </p>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- GSAP Core & ScrollTrigger (Deferred) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+  <!-- Optimized Main Script -->
   <script>
+    // 1. Year auto-update
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const videoContainers = document.querySelectorAll('.video-container');
+    // 2. High-Efficiency Video Setup
+    const videoContainers = document.querySelectorAll('.video-card-container');
     videoContainers.forEach(container => {
       const src = container.getAttribute('data-src');
-      container.className = "relative flex-none w-[270px] sm:w-[310px] h-[480px] sm:h-[540px] rounded-2xl overflow-hidden cursor-pointer group shrink-0 snap-center border border-white/[0.06] bg-white/5 shadow-xl";
+      const poster = container.getAttribute('data-poster');
 
       const video = document.createElement('video');
-      video.src = src;
+      video.setAttribute('data-src', src);
+      if (poster) video.setAttribute('poster', poster);
       video.className = "w-full h-full object-cover";
       video.loop = true;
       video.muted = true;
-      video.autoplay = true;
       video.setAttribute('playsinline', '');
       video.setAttribute('webkit-playsinline', '');
-      video.preload = "auto";
+      video.preload = "none"; // Zero data transfer until visible
 
       const gradient = document.createElement('div');
       gradient.className = "absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none z-10";
 
       const overlay = document.createElement('div');
-      overlay.className = "absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 bg-black/5 backdrop-blur-[1px]";
+      overlay.className = "absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 bg-black/5";
 
       const playIcon = `<div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-2xl"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white" class="ml-1"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>`;
       const pauseIcon = `<div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-2xl"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></div>`;
@@ -664,23 +568,31 @@
       });
     });
 
+    // 3. Smart Lazy Video Playback with IntersectionObserver
     if ('IntersectionObserver' in window) {
       const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           const video = entry.target.querySelector('video');
           if (video) {
             if (entry.isIntersecting) {
+              if (!video.src) {
+                video.src = video.getAttribute('data-src');
+                video.load();
+              }
               video.play().catch(() => {});
             } else {
-              video.pause();
+              if (video.src) {
+                video.pause();
+              }
             }
           }
         });
-      }, { threshold: 0.25 });
+      }, { threshold: 0.2, rootMargin: "100px" });
 
       videoContainers.forEach(container => videoObserver.observe(container));
     }
 
+    // 4. Modal Open/Close Controls
     const trigger = document.getElementById('schedule-trigger');
     const backdrop = document.getElementById('modal-backdrop');
     const modal = document.getElementById('schedule-modal');
@@ -700,807 +612,289 @@
       modal.style.transform = "scale(0.95)";
     }
 
-    trigger.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', (e) => {
-      if (e.target === backdrop) closeModal();
-    });
+    if (trigger) trigger.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) {
+      backdrop.addEventListener('click', (e) => {
+        if (e.target === backdrop) closeModal();
+      });
+    }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      gsap.registerPlugin(ScrollTrigger);
+    // 5. On-Demand Lazy Loaded Leaflet Map with Native Dark Tiles
+    let mapInitialized = false;
+    function initMap() {
+      if (mapInitialized) return;
+      mapInitialized = true;
 
-      gsap.set(".logo-letter", { opacity: 0, x: -25 });
+      // Load Leaflet CSS
+      if (!document.getElementById('leaflet-css')) {
+        const leafletCss = document.createElement('link');
+        leafletCss.id = 'leaflet-css';
+        leafletCss.rel = 'stylesheet';
+        leafletCss.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        document.head.appendChild(leafletCss);
+      }
 
-      gsap.to("#header", { 
-        y: 0, 
-        opacity: 1, 
-        duration: 0.8, 
-        ease: "expo.out",
-        onComplete: () => {
-          gsap.to(".logo-letter", {
-            opacity: 1,
-            x: 0,
-            duration: 0.6,
-            stagger: 0.08,
-            ease: "back.out(1.5)"
-          });
+      // Load Leaflet JS
+      const leafletScript = document.createElement('script');
+      leafletScript.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      leafletScript.onload = () => {
+        const map = L.map('map', {
+          center: [55.743, 52.390],
+          zoom: 12,
+          zoomControl: true,
+          scrollWheelZoom: false // Prevent mobile scroll trap
+        });
+
+        // Fast Native Dark Tiles (CartoDB Dark Matter - No heavy CSS filters!)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; OpenStreetMap &copy; CARTO',
+          subdomains: 'abcd',
+          maxZoom: 19
+        }).addTo(map);
+
+        // Workshop Marker
+        const orangeIcon = L.divIcon({
+          className: 'custom-div-icon',
+          html: `<div class="w-7 h-7 bg-brand-orange border-2 border-white rounded-full flex items-center justify-center shadow-lg"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" x2="8.12" y1="4" y2="15.88"/><line x1="14.47" x2="20" y1="14.48" y2="20"/><line x1="8.12" x2="12" y1="8.12" y2="12"/></svg></div>`,
+          iconSize: [28, 28],
+          iconAnchor: [14, 14]
+        });
+
+        const marker = L.marker([55.736716, 52.372688], { icon: orangeIcon }).addTo(map);
+        marker.bindPopup("<b>Мастерская Zаточка</b><br><span class='text-xs font-normal text-white/70'>Бульвар Касимова, 11а</span>");
+
+        // Delivery Polygon Points
+        const deliveryPolygon = L.polygon([
+          [
+            [55.7226298, 52.3355754], [55.7229613, 52.3361391], [55.7231677, 52.3364422], [55.7233536, 52.3366374],
+            [55.7244215, 52.3375971], [55.7247879, 52.3380505], [55.7249862, 52.3382664], [55.7250854, 52.3384427],
+            [55.7254504, 52.3393568], [55.7256975, 52.3402099], [55.7259047, 52.3406400], [55.7262506, 52.3412328],
+            [55.7263256, 52.3414534], [55.7263825, 52.3417964], [55.7265267, 52.3431441], [55.7265845, 52.3434571],
+            [55.7267540, 52.3441621], [55.7268699, 52.3445500], [55.7270969, 52.3455152], [55.7271406, 52.3456184],
+            [55.7272032, 52.3457123], [55.7273679, 52.3458546], [55.7274255, 52.3462193], [55.7273608, 52.3464036],
+            [55.7273435, 52.3465694], [55.7273599, 52.3466895], [55.7274619, 52.3470854], [55.7274993, 52.3473367],
+            [55.7275117, 52.3477368], [55.7274982, 52.3481517], [55.7274698, 52.3487055], [55.7274189, 52.3491964],
+            [55.7274021, 52.3492617], [55.7273137, 52.3494381], [55.7272858, 52.3496121], [55.7273123, 52.3497957],
+            [55.7274868, 52.3503231], [55.7275479, 52.3504361], [55.7276165, 52.3505188], [55.7280322, 52.3508842],
+            [55.7280662, 52.3509326], [55.7286137, 52.3522065], [55.7289938, 52.3530460], [55.7292768, 52.3536493],
+            [55.7293942, 52.3538636], [55.7317602, 52.3573307], [55.7323722, 52.3579566], [55.7324668, 52.3580237],
+            [55.7325712, 52.3580709], [55.7327599, 52.3581029], [55.7329671, 52.3580677], [55.7331196, 52.3579865],
+            [55.7332535, 52.3578503], [55.7333413, 52.3576695], [55.7345492, 52.3537140], [55.7345774, 52.3535458],
+            [55.7345604, 52.3533864], [55.7344755, 52.3531938], [55.7337044, 52.3520877], [55.7332556, 52.3513448],
+            [55.7318312, 52.3499931], [55.7315257, 52.3496789], [55.7312510, 52.3494457], [55.7308119, 52.3490341],
+            [55.7294804, 52.3477021], [55.7293822, 52.3475106], [55.7294297, 52.3473689], [55.7294816, 52.3473870],
+            [55.7348486, 52.3524634], [55.7351315, 52.3529826], [55.7355755, 52.3535751], [55.7358816, 52.3541938],
+            [55.7358757, 52.3544521], [55.7359804, 52.3555707], [55.7357999, 52.3564510], [55.7351681, 52.3584798],
+            [55.7350629, 52.3592995], [55.7350742, 52.3599636], [55.7351124, 52.3601543], [55.7351923, 52.3603009],
+            [55.7352993, 52.3604139], [55.7353101, 52.3606342], [55.7353923, 52.3608265], [55.7355057, 52.3609551],
+            [55.7358015, 52.3611869], [55.7356256, 52.3621729], [55.7352698, 52.3638712], [55.7352642, 52.3639839],
+            [55.7352800, 52.3640967], [55.7353621, 52.3642867], [55.7354670, 52.3644083], [55.7364719, 52.3653163],
+            [55.7366591, 52.3654169], [55.7368494, 52.3654463], [55.7370034, 52.3654249], [55.7371627, 52.3653550],
+            [55.7372689, 52.3652704], [55.7373633, 52.3651475], [55.7374340, 52.3649576], [55.7375534, 52.3642689],
+            [55.7386382, 52.3647834], [55.7416323, 52.3663192], [55.7420559, 52.3676816], [55.7419033, 52.3685658],
+            [55.7418370, 52.3691471], [55.7418089, 52.3696289], [55.7418414, 52.3698423], [55.7418906, 52.3699496],
+            [55.7419596, 52.3700449], [55.7420463, 52.3701250], [55.7421378, 52.3701829], [55.7462506, 52.3723116],
+            [55.7465464, 52.3724545], [55.7468853, 52.3725601], [55.7470395, 52.3732758], [55.7467723, 52.3765918],
+            [55.7464665, 52.3782132], [55.7461962, 52.3798754], [55.7456831, 52.3815718], [55.7455857, 52.3822200],
+            [55.7456082, 52.3823980], [55.7456615, 52.3825268], [55.7457709, 52.3826682], [55.7459002, 52.3827622],
+            [55.7468094, 52.3832313], [55.7472820, 52.3833309], [55.7480589, 52.3837732], [55.7484392, 52.3840633],
+            [55.7487926, 52.3843921], [55.7491585, 52.3848160], [55.7495299, 52.3853209], [55.7497738, 52.3857006],
+            [55.7504561, 52.3869469], [55.7505906, 52.3872849], [55.7507870, 52.3876519], [55.7509653, 52.3878921],
+            [55.7524926, 52.3906962], [55.7526371, 52.3910660], [55.7529787, 52.3916729], [55.7530712, 52.3919371],
+            [55.7531335, 52.3920307], [55.7532384, 52.3921372], [55.7535331, 52.3926904], [55.7537691, 52.3930439],
+            [55.7551224, 52.3955326], [55.7552098, 52.3956569], [55.7553165, 52.3957499], [55.7554612, 52.3958224],
+            [55.7556347, 52.3958554], [55.7556445, 52.3958709], [55.7575254, 52.3992920], [55.7586257, 52.4013754],
+            [55.7614572, 52.4065413], [55.7627670, 52.4089840], [55.7640119, 52.4112583], [55.7640865, 52.4113555],
+            [55.7642249, 52.4114417], [55.7643341, 52.4115368], [55.7644818, 52.4115888], [55.7645603, 52.4115922],
+            [55.7646757, 52.4115685], [55.7648093, 52.4114870], [55.7648832, 52.4113953], [55.7656451, 52.4100976],
+            [55.7656878, 52.4099937], [55.7656999, 52.4098841], [55.7659748, 52.4094158], [55.7661620, 52.4093527],
+            [55.7662861, 52.4092488], [55.7665179, 52.4088889], [55.7667705, 52.4084508], [55.7668638, 52.4083265],
+            [55.7669645, 52.4084605], [55.7674466, 52.4093403], [55.7676584, 52.4097799], [55.7681367, 52.4106329],
+            [55.7681387, 52.4107761], [55.7681927, 52.4109251], [55.7683003, 52.4110414], [55.7684814, 52.4111212],
+            [55.7687117, 52.4116243], [55.7689091, 52.4122646], [55.7688805, 52.4124164], [55.7689067, 52.4125722],
+            [55.7695039, 52.4137683], [55.7690459, 52.4145252], [55.7689335, 52.4145394], [55.7688624, 52.4145664],
+            [55.7687417, 52.4146578], [55.7684824, 52.4150737], [55.7683554, 52.4151163], [55.7682385, 52.4152106],
+            [55.7680494, 52.4155451], [55.7680287, 52.4156557], [55.7680396, 52.4157677], [55.7682416, 52.4163596],
+            [55.7680114, 52.4174276], [55.7679483, 52.4175273], [55.7679123, 52.4176422], [55.7679121, 52.4177626],
+            [55.7679478, 52.4178776], [55.7680450, 52.4180048], [55.7682840, 52.4181981], [55.7685770, 52.4183450],
+            [55.7687611, 52.4183808], [55.7695956, 52.4188122], [55.7699242, 52.4190116], [55.7702601, 52.4192797],
+            [55.7704921, 52.4195212], [55.7705964, 52.4196539], [55.7707021, 52.4198446], [55.7710498, 52.4203548],
+            [55.7714049, 52.4210221], [55.7714459, 52.4212250], [55.7714765, 52.4213011], [55.7715220, 52.4213694],
+            [55.7716347, 52.4214669], [55.7716856, 52.4215355], [55.7736583, 52.4251753], [55.7738635, 52.4254813],
+            [55.7742716, 52.4261732], [55.7744748, 52.4264634], [55.7745585, 52.4265479], [55.7747015, 52.4266156],
+            [55.7748595, 52.4266225], [55.7749735, 52.4265866], [55.7751696, 52.4267723], [55.7751190, 52.4269101],
+            [55.7751102, 52.4270613], [55.7751582, 52.4272050], [55.7752608, 52.4273242], [55.7753665, 52.4273851],
+            [55.7755281, 52.4274339], [55.7757627, 52.4275689], [55.7760666, 52.4277815], [55.7772628, 52.4283786],
+            [55.7773590, 52.4284632], [55.7774128, 52.4285932], [55.7774018, 52.4297651], [55.7773441, 52.4299265],
+            [55.7764440, 52.4318384], [55.7763754, 52.4321359], [55.7763541, 52.4325518], [55.7762874, 52.4329065],
+            [55.7756959, 52.4340523], [55.7750699, 52.4350397], [55.7748305, 52.4353607], [55.7742288, 52.4360697],
+            [55.7738710, 52.4364276], [55.7737895, 52.4364951], [55.7737512, 52.4365058], [55.7737069, 52.4364950],
+            [55.7736438, 52.4364513], [55.7733299, 52.4359032], [55.7732214, 52.4357952], [55.7731175, 52.4357455],
+            [55.7730037, 52.4357275], [55.7728896, 52.4357426], [55.7727530, 52.4358118], [55.7726524, 52.4359272],
+            [55.7717952, 52.4373891], [55.7715738, 52.4376716], [55.7714843, 52.4377283], [55.7713299, 52.4377836],
+            [55.7704689, 52.4381647], [55.7703734, 52.4382344], [55.7703024, 52.4383289], [55.7702622, 52.4384401],
+            [55.7702620, 52.4385973], [55.7703224, 52.4387424], [55.7704340, 52.4388530], [55.7705039, 52.4388898],
+            [55.7706188, 52.4389176], [55.7708874, 52.4388932], [55.7710852, 52.4388870], [55.7710860, 52.4388979],
+            [55.7698553, 52.4393998], [55.7692445, 52.4396894], [55.7687771, 52.4399665], [55.7678918, 52.4406062],
+            [55.7668778, 52.4413948], [55.7667522, 52.4414318], [55.7666818, 52.4414716], [55.7635306, 52.4439019],
+            [55.7634575, 52.4439437], [55.7632399, 52.4438807], [55.7630846, 52.4438998], [55.7629486, 52.4439769],
+            [55.7628525, 52.4441004], [55.7628158, 52.4442122], [55.7628156, 52.4443670], [55.7627914, 52.4445430],
+            [55.7628025, 52.4446614], [55.7628291, 52.4447363], [55.7628952, 52.4448350], [55.7629543, 52.4448881],
+            [55.7630595, 52.4449434], [55.7631953, 52.4449660], [55.7632498, 52.4449931], [55.7633393, 52.4451071],
+            [55.7656980, 52.4494157], [55.7660563, 52.4501606], [55.7662542, 52.4506374], [55.7664072, 52.4510755],
+            [55.7666304, 52.4517776], [55.7668139, 52.4524754], [55.7669290, 52.4529733], [55.7671124, 52.4540267],
+            [55.7677716, 52.4587627], [55.7677750, 52.4589582], [55.7677474, 52.4591390], [55.7675892, 52.4596125],
+            [55.7675148, 52.4597069], [55.7651439, 52.4607387], [55.7632837, 52.4615701], [55.7630089, 52.4617369],
+            [55.7628002, 52.4619148], [55.7625970, 52.4621539], [55.7617527, 52.4635062], [55.7616858, 52.4635612],
+            [55.7616229, 52.4635850], [55.7614436, 52.4635822], [55.7613280, 52.4636064], [55.7612244, 52.4636634],
+            [55.7611666, 52.4637172], [55.7611025, 52.4638165], [55.7610702, 52.4639302], [55.7610636, 52.4645588],
+            [55.7610443, 52.4646895], [55.7609851, 52.4648314], [55.7587045, 52.4687236], [55.7586524, 52.4687781],
+            [55.7585908, 52.4688098], [55.7584050, 52.4688135], [55.7582947, 52.4688452], [55.7581979, 52.4689069],
+            [55.7581226, 52.4689935], [55.7580750, 52.4690979], [55.7580607, 52.4691733], [55.7580617, 52.4697184],
+            [55.7580170, 52.4698972], [55.7546454, 52.4756268], [55.7545770, 52.4756707], [55.7545150, 52.4756823],
+            [55.7544303, 52.4756569], [55.7543546, 52.4755893], [55.7542987, 52.4754989], [55.7504449, 52.4684044],
+            [55.7503815, 52.4682010], [55.7503328, 52.4678635], [55.7503296, 52.4677314], [55.7503835, 52.4674818],
+            [55.7504028, 52.4672138], [55.7503297, 52.4664027], [55.7503292, 52.4662387], [55.7503642, 52.4659563],
+            [55.7504360, 52.4657233], [55.7523070, 52.4625033], [55.7533875, 52.4607273], [55.7535849, 52.4606233],
+            [55.7536916, 52.4605039], [55.7537360, 52.4603919], [55.7537460, 52.4603120], [55.7537243, 52.4599726],
+            [55.7536798, 52.4598602], [55.7536038, 52.4597662], [55.7535031, 52.4596992], [55.7533932, 52.4596661],
+            [55.7533699, 52.4596354], [55.7473585, 52.4485448], [55.7473181, 52.4483249], [55.7472733, 52.4482182],
+            [55.7471570, 52.4480888], [55.7457909, 52.4455553], [55.7456777, 52.4454439], [55.7455302, 52.4453854],
+            [55.7453715, 52.4453888], [55.7452602, 52.4454321], [55.7451410, 52.4455369], [55.7441198, 52.4469526],
+            [55.7431710, 52.4486251], [55.7420241, 52.4505700], [55.7415437, 52.4516755], [55.7409910, 52.4516076],
+            [55.7403180, 52.4503634], [55.7391858, 52.4483305], [55.7385724, 52.4471190], [55.7380300, 52.4461033],
+            [55.7375764, 52.4451986], [55.7365136, 52.4427969], [55.7363798, 52.4422641], [55.7363528, 52.4419957],
+            [55.7363216, 52.4418992], [55.7362636, 52.4417927], [55.7361388, 52.4416596], [55.7359800, 52.4415703],
+            [55.7341320, 52.4410117], [55.7340346, 52.4398944], [55.7340007, 52.4397346], [55.7328834, 52.4371842],
+            [55.7325441, 52.4365157], [55.7319192, 52.4348928], [55.7300327, 52.4313712], [55.7184235, 52.4100449],
+            [55.7182925, 52.4098771], [55.7178981, 52.4095548], [55.7146970, 52.4036766], [55.7139596, 52.4023111],
+            [55.7132397, 52.4009354], [55.7128737, 52.4003140], [55.7093314, 52.3937978], [55.7093074, 52.3929409],
+            [55.7092857, 52.3928262], [55.7092311, 52.3926863], [55.7085671, 52.3733654], [55.7090444, 52.3735809],
+            [55.7097839, 52.3743827], [55.7126958, 52.3773396], [55.7126630, 52.3778451], [55.7127823, 52.3785809],
+            [55.7129831, 52.3793037], [55.7130104, 52.3802244], [55.7130454, 52.3803252], [55.7137733, 52.3817653],
+            [55.7137325, 52.3823542], [55.7138698, 52.3829137], [55.7139064, 52.3834542], [55.7138377, 52.3843501],
+            [55.7136241, 52.3847150], [55.7133953, 52.3849167], [55.7121871, 52.3842201], [55.7120460, 52.3841709],
+            [55.7186373, 52.3685619], [55.7187023, 52.3645480], [55.7187926, 52.3589838], [55.7203367, 52.3601152],
+            [55.7226298, 52.3355754]
+          ],
+          [
+            [55.7498371, 52.4581518], [55.7514113, 52.4611058], [55.7498001, 52.4639731], [55.7474549, 52.4624967],
+            [55.7476365, 52.4619388], [55.7498371, 52.4581518]
+          ]
+        ], {
+          color: '#F97316',
+          fillColor: '#F97316',
+          fillOpacity: 0.15,
+          weight: 2
+        }).addTo(map);
+        
+        deliveryPolygon.bindPopup("<b>Зона экспресс-доставки</b><br><span class='text-xs font-normal text-white/70'>Обслуживаемые комплексы Нового Города (включая Чаллы Яр)</span>");
+      };
+
+      document.body.appendChild(leafletScript);
+    }
+
+    // Lazy load map when delivery section is near viewport
+    if ('IntersectionObserver' in window) {
+      const mapObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          initMap();
+          mapObserver.disconnect();
         }
+      }, { rootMargin: '400px' });
+
+      const deliverySection = document.getElementById('delivery');
+      if (deliverySection) mapObserver.observe(deliverySection);
+    } else {
+      initMap();
+    }
+
+    // 6. Safe Hardware-Accelerated GSAP Animations
+    function initAnimations() {
+      if (typeof gsap === 'undefined') return;
+      if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+
+      // Logo Reveal
+      gsap.from("#logo-container .logo-letter", {
+        opacity: 0,
+        x: -20,
+        duration: 0.6,
+        stagger: 0.06,
+        ease: "back.out(1.5)"
       });
 
+      // Hero Timeline
       const tl = gsap.timeline();
-      tl.to("#hero-title", { y: 0, opacity: 1, duration: 1.2, ease: "expo.out", delay: 0.2 })
-        .to("#hero-subtitle", { opacity: 1, duration: 0.8, ease: "power2.out" }, "-=0.6")
-        .to("#hero-cta", { opacity: 1, duration: 0.8, ease: "power2.out" }, "-=0.6")
-        .to("#hero-benefits", { opacity: 1, duration: 0.1 }, "-=0.4")
-        .to(".benefit-card", { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8, 
-          stagger: 0.15, 
+      tl.from("#hero-title", { y: 25, opacity: 0, duration: 0.9, ease: "expo.out", delay: 0.1 })
+        .from("#hero-subtitle", { y: 15, opacity: 0, duration: 0.7, ease: "power2.out" }, "-=0.5")
+        .from("#hero-cta", { y: 15, opacity: 0, duration: 0.7, ease: "power2.out" }, "-=0.5")
+        .from(".benefit-card", {
+          opacity: 0,
+          y: 20,
+          duration: 0.7,
+          stagger: 0.12,
           ease: "expo.out",
           onComplete: () => {
-            gsap.to("#clock-circle", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" });
-            gsap.to("#clock-hands", { strokeDashoffset: 0, duration: 0.5, delay: 0.4, ease: "power2.out" });
-            
-            gsap.to("#check-board", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" });
-            gsap.to("#check-mark", { strokeDashoffset: 0, duration: 0.4, delay: 0.5, ease: "back.out(1.5)" });
-            
-            gsap.to("#shield-border", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" });
-            gsap.to("#shield-check", { strokeDashoffset: 0, duration: 0.4, delay: 0.5, ease: "power2.out" });
-            
-            gsap.fromTo(".reputation-star", 
-              { opacity: 0, scale: 0, y: -120 },
-              { 
-                opacity: 1, 
-                scale: 1, 
-                y: 0,
-                duration: 0.7, 
-                stagger: 0.25, 
-                delay: 0.3,
-                ease: "bounce.out" 
-              }
+            gsap.to("#clock-circle", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" });
+            gsap.to("#clock-hands", { strokeDashoffset: 0, duration: 0.4, delay: 0.3, ease: "power2.out" });
+            gsap.to("#check-board", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" });
+            gsap.to("#check-mark", { strokeDashoffset: 0, duration: 0.4, delay: 0.3, ease: "back.out(1.5)" });
+            gsap.to("#shield-border", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" });
+            gsap.to("#shield-check", { strokeDashoffset: 0, duration: 0.4, delay: 0.3, ease: "power2.out" });
+            gsap.fromTo(".reputation-star",
+              { opacity: 0, scale: 0 },
+              { opacity: 1, scale: 1, duration: 0.5, stagger: 0.15, delay: 0.2, ease: "back.out(2)" }
             );
           }
-        }, "-=0.6");
+        }, "-=0.4");
 
-      gsap.to(".phone-pulse", {
-        scale: 1.08,
-        duration: 1.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut"
+      // Scroll triggers
+      if (typeof ScrollTrigger !== 'undefined') {
+        gsap.from(".price-category", {
+          scrollTrigger: { trigger: "#price-grid", start: "top 90%" },
+          opacity: 0,
+          y: 25,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "expo.out"
+        });
+
+        gsap.from(".delivery-card", {
+          scrollTrigger: { trigger: "#delivery-cards", start: "top 90%" },
+          opacity: 0,
+          y: 25,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "expo.out"
+        });
+
+        gsap.from("#delivery-terms", {
+          scrollTrigger: { trigger: "#delivery-terms", start: "top 90%" },
+          opacity: 0,
+          y: 25,
+          duration: 0.8,
+          ease: "expo.out"
+        });
+
+        gsap.from(".info-card", {
+          scrollTrigger: { trigger: "#about", start: "top 90%" },
+          opacity: 0,
+          y: 25,
+          duration: 0.8,
+          stagger: 0.12,
+          ease: "expo.out"
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(initAnimations, 50);
       });
-
-      gsap.to(".price-category", {
-        scrollTrigger: {
-          trigger: "#price-grid",
-          start: "top 90%",
-        },
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "expo.out"
-      });
-
-      gsap.to(".delivery-card", {
-        scrollTrigger: {
-          trigger: "#delivery-cards",
-          start: "top 90%",
-        },
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "expo.out"
-      });
-
-      gsap.to("#delivery-terms", {
-        scrollTrigger: {
-          trigger: "#delivery-terms",
-          start: "top 90%",
-        },
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "expo.out"
-      });
-
-      gsap.to(".info-card", {
-        scrollTrigger: {
-          trigger: "#about",
-          start: "top 90%",
-        },
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "expo.out"
-      });
-
-      gsap.to("#icon-hair svg", {
-        scrollTrigger: { trigger: "#price-grid", start: "top 95%", end: "bottom 5%", scrub: 1.5 },
-        rotate: 15, scale: 1.02, transformOrigin: "center center"
-      });
-      gsap.to("#icon-manicure svg", {
-        scrollTrigger: { trigger: "#price-grid", start: "top 95%", end: "bottom 5%", scrub: 1.5 },
-        y: 5, rotate: -5
-      });
-      gsap.to("#icon-household svg", {
-        scrollTrigger: { trigger: "#price-grid", start: "top 95%", end: "bottom 5%", scrub: 1.5 },
-        rotate: 10, transformOrigin: "bottom right"
-      });
-
-      // Initialize Leaflet Map
-      const map = L.map('map', {
-        center: [55.743, 52.390],
-        zoom: 12,
-        zoomControl: true,
-        scrollWheelZoom: true
-      });
-
-      // Add Tile Layer
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap'
-      }).addTo(map);
-
-      // Custom marker icon
-      const orangeIcon = L.divIcon({
-        className: 'custom-div-icon',
-        html: `<div class="w-7 h-7 bg-brand-orange border-2 border-white rounded-full flex items-center justify-center shadow-lg"><i class="fa-solid fa-scissors text-white text-[11px]"></i></div>`,
-        iconSize: [28, 28],
-        iconAnchor: [14, 14]
-      });
-
-      // Add Workshop Marker
-      const marker = L.marker([55.736716, 52.372688], { icon: orangeIcon }).addTo(map);
-      marker.bindPopup("<b>Мастерская Zаточка</b><br><span class='text-xs font-normal text-white/70'>Бульвар Касимова, 11а</span>").openPopup();
-
-      // Add Delivery Zone Polygon — 120+ OSM-exact points along real streets
-      // Excludes: Orlovka village, Kama River, forest parks. Only city residential.
-      const deliveryPolygon = L.polygon([
-        [
-          [55.7226298, 52.3355754],
-          [55.7229613, 52.3361391],
-          [55.7231677, 52.3364422],
-          [55.7233536, 52.3366374],
-          [55.7244215, 52.3375971],
-          [55.7247879, 52.3380505],
-          [55.7249862, 52.3382664],
-          [55.7250854, 52.3384427],
-          [55.7254504, 52.3393568],
-          [55.7256975, 52.3402099],
-          [55.7259047, 52.3406400],
-          [55.7262506, 52.3412328],
-          [55.7263256, 52.3414534],
-          [55.7263825, 52.3417964],
-          [55.7265267, 52.3431441],
-          [55.7265845, 52.3434571],
-          [55.7267540, 52.3441621],
-          [55.7268699, 52.3445500],
-          [55.7270969, 52.3455152],
-          [55.7271406, 52.3456184],
-          [55.7272032, 52.3457123],
-          [55.7273679, 52.3458546],
-          [55.7274255, 52.3462193],
-          [55.7273608, 52.3464036],
-          [55.7273435, 52.3465694],
-          [55.7273599, 52.3466895],
-          [55.7274619, 52.3470854],
-          [55.7274993, 52.3473367],
-          [55.7275117, 52.3477368],
-          [55.7274982, 52.3481517],
-          [55.7274698, 52.3487055],
-          [55.7274189, 52.3491964],
-          [55.7274021, 52.3492617],
-          [55.7273137, 52.3494381],
-          [55.7272858, 52.3496121],
-          [55.7273123, 52.3497957],
-          [55.7274868, 52.3503231],
-          [55.7275479, 52.3504361],
-          [55.7276165, 52.3505188],
-          [55.7280322, 52.3508842],
-          [55.7280662, 52.3509326],
-          [55.7286137, 52.3522065],
-          [55.7289938, 52.3530460],
-          [55.7292768, 52.3536493],
-          [55.7293942, 52.3538636],
-          [55.7317602, 52.3573307],
-          [55.7323722, 52.3579566],
-          [55.7324668, 52.3580237],
-          [55.7325712, 52.3580709],
-          [55.7327599, 52.3581029],
-          [55.7329671, 52.3580677],
-          [55.7331196, 52.3579865],
-          [55.7332535, 52.3578503],
-          [55.7333413, 52.3576695],
-          [55.7345492, 52.3537140],
-          [55.7345774, 52.3535458],
-          [55.7345604, 52.3533864],
-          [55.7344755, 52.3531938],
-          [55.7337044, 52.3520877],
-          [55.7332556, 52.3513448],
-          [55.7318312, 52.3499931],
-          [55.7315257, 52.3496789],
-          [55.7312510, 52.3494457],
-          [55.7308119, 52.3490341],
-          [55.7294804, 52.3477021],
-          [55.7293822, 52.3475106],
-          [55.7294297, 52.3473689],
-          [55.7294816, 52.3473870],
-          [55.7348486, 52.3524634],
-          [55.7351315, 52.3529826],
-          [55.7355755, 52.3535751],
-          [55.7358816, 52.3541938],
-          [55.7358757, 52.3544521],
-          [55.7359804, 52.3555707],
-          [55.7357999, 52.3564510],
-          [55.7351681, 52.3584798],
-          [55.7350629, 52.3592995],
-          [55.7350742, 52.3599636],
-          [55.7351124, 52.3601543],
-          [55.7351923, 52.3603009],
-          [55.7352993, 52.3604139],
-          [55.7353101, 52.3606342],
-          [55.7353923, 52.3608265],
-          [55.7355057, 52.3609551],
-          [55.7358015, 52.3611869],
-          [55.7356256, 52.3621729],
-          [55.7352698, 52.3638712],
-          [55.7352642, 52.3639839],
-          [55.7352800, 52.3640967],
-          [55.7353621, 52.3642867],
-          [55.7354670, 52.3644083],
-          [55.7364719, 52.3653163],
-          [55.7366591, 52.3654169],
-          [55.7368494, 52.3654463],
-          [55.7370034, 52.3654249],
-          [55.7371627, 52.3653550],
-          [55.7372689, 52.3652704],
-          [55.7373633, 52.3651475],
-          [55.7374340, 52.3649576],
-          [55.7375534, 52.3642689],
-          [55.7386382, 52.3647834],
-          [55.7416323, 52.3663192],
-          [55.7420559, 52.3676816],
-          [55.7419033, 52.3685658],
-          [55.7418370, 52.3691471],
-          [55.7418089, 52.3696289],
-          [55.7418414, 52.3698423],
-          [55.7418906, 52.3699496],
-          [55.7419596, 52.3700449],
-          [55.7420463, 52.3701250],
-          [55.7421378, 52.3701829],
-          [55.7462506, 52.3723116],
-          [55.7465464, 52.3724545],
-          [55.7468853, 52.3725601],
-          [55.7470395, 52.3732758],
-          [55.7467723, 52.3765918],
-          [55.7464665, 52.3782132],
-          [55.7461962, 52.3798754],
-          [55.7456831, 52.3815718],
-          [55.7455857, 52.3822200],
-          [55.7456082, 52.3823980],
-          [55.7456615, 52.3825268],
-          [55.7457709, 52.3826682],
-          [55.7459002, 52.3827622],
-          [55.7468094, 52.3832313],
-          [55.7472820, 52.3833309],
-          [55.7480589, 52.3837732],
-          [55.7484392, 52.3840633],
-          [55.7487926, 52.3843921],
-          [55.7491585, 52.3848160],
-          [55.7495299, 52.3853209],
-          [55.7497738, 52.3857006],
-          [55.7504561, 52.3869469],
-          [55.7505906, 52.3872849],
-          [55.7507870, 52.3876519],
-          [55.7509653, 52.3878921],
-          [55.7524926, 52.3906962],
-          [55.7526371, 52.3910660],
-          [55.7529787, 52.3916729],
-          [55.7530712, 52.3919371],
-          [55.7531335, 52.3920307],
-          [55.7532384, 52.3921372],
-          [55.7535331, 52.3926904],
-          [55.7537691, 52.3930439],
-          [55.7551224, 52.3955326],
-          [55.7552098, 52.3956569],
-          [55.7553165, 52.3957499],
-          [55.7554612, 52.3958224],
-          [55.7556347, 52.3958554],
-          [55.7556445, 52.3958709],
-          [55.7575254, 52.3992920],
-          [55.7586257, 52.4013754],
-          [55.7614572, 52.4065413],
-          [55.7627670, 52.4089840],
-          [55.7640119, 52.4112583],
-          [55.7640865, 52.4113555],
-          [55.7642249, 52.4114417],
-          [55.7643341, 52.4115368],
-          [55.7644818, 52.4115888],
-          [55.7645603, 52.4115922],
-          [55.7646757, 52.4115685],
-          [55.7648093, 52.4114870],
-          [55.7648832, 52.4113953],
-          [55.7656451, 52.4100976],
-          [55.7656878, 52.4099937],
-          [55.7656999, 52.4098841],
-          [55.7659748, 52.4094158],
-          [55.7661620, 52.4093527],
-          [55.7662861, 52.4092488],
-          [55.7665179, 52.4088889],
-          [55.7667705, 52.4084508],
-          [55.7668638, 52.4083265],
-          [55.7669645, 52.4084605],
-          [55.7674466, 52.4093403],
-          [55.7676584, 52.4097799],
-          [55.7681367, 52.4106329],
-          [55.7681387, 52.4107761],
-          [55.7681927, 52.4109251],
-          [55.7683003, 52.4110414],
-          [55.7684814, 52.4111212],
-          [55.7687117, 52.4116243],
-          [55.7689091, 52.4122646],
-          [55.7688805, 52.4124164],
-          [55.7689067, 52.4125722],
-          [55.7695039, 52.4137683],
-          [55.7690459, 52.4145252],
-          [55.7689335, 52.4145394],
-          [55.7688624, 52.4145664],
-          [55.7687417, 52.4146578],
-          [55.7684824, 52.4150737],
-          [55.7683554, 52.4151163],
-          [55.7682385, 52.4152106],
-          [55.7680494, 52.4155451],
-          [55.7680287, 52.4156557],
-          [55.7680396, 52.4157677],
-          [55.7682416, 52.4163596],
-          [55.7680114, 52.4174276],
-          [55.7679483, 52.4175273],
-          [55.7679123, 52.4176422],
-          [55.7679121, 52.4177626],
-          [55.7679478, 52.4178776],
-          [55.7680450, 52.4180048],
-          [55.7682840, 52.4181981],
-          [55.7685770, 52.4183450],
-          [55.7687611, 52.4183808],
-          [55.7695956, 52.4188122],
-          [55.7699242, 52.4190116],
-          [55.7702601, 52.4192797],
-          [55.7704921, 52.4195212],
-          [55.7705964, 52.4196539],
-          [55.7707021, 52.4198446],
-          [55.7710498, 52.4203548],
-          [55.7714049, 52.4210221],
-          [55.7714459, 52.4212250],
-          [55.7714765, 52.4213011],
-          [55.7715220, 52.4213694],
-          [55.7716347, 52.4214669],
-          [55.7716856, 52.4215355],
-          [55.7736583, 52.4251753],
-          [55.7738635, 52.4254813],
-          [55.7742716, 52.4261732],
-          [55.7744748, 52.4264634],
-          [55.7745585, 52.4265479],
-          [55.7747015, 52.4266156],
-          [55.7748595, 52.4266225],
-          [55.7749735, 52.4265866],
-          [55.7751696, 52.4267723],
-          [55.7751190, 52.4269101],
-          [55.7751102, 52.4270613],
-          [55.7751582, 52.4272050],
-          [55.7752608, 52.4273242],
-          [55.7753665, 52.4273851],
-          [55.7755281, 52.4274339],
-          [55.7757627, 52.4275689],
-          [55.7760666, 52.4277815],
-          [55.7772628, 52.4283786],
-          [55.7773590, 52.4284632],
-          [55.7774128, 52.4285932],
-          [55.7774018, 52.4297651],
-          [55.7773441, 52.4299265],
-          [55.7764440, 52.4318384],
-          [55.7763754, 52.4321359],
-          [55.7763541, 52.4325518],
-          [55.7762874, 52.4329065],
-          [55.7756959, 52.4340523],
-          [55.7750699, 52.4350397],
-          [55.7748305, 52.4353607],
-          [55.7742288, 52.4360697],
-          [55.7738710, 52.4364276],
-          [55.7737895, 52.4364951],
-          [55.7737512, 52.4365058],
-          [55.7737069, 52.4364950],
-          [55.7736438, 52.4364513],
-          [55.7733299, 52.4359032],
-          [55.7732214, 52.4357952],
-          [55.7731175, 52.4357455],
-          [55.7730037, 52.4357275],
-          [55.7728896, 52.4357426],
-          [55.7727530, 52.4358118],
-          [55.7726524, 52.4359272],
-          [55.7717952, 52.4373891],
-          [55.7715738, 52.4376716],
-          [55.7714843, 52.4377283],
-          [55.7713299, 52.4377836],
-          [55.7704689, 52.4381647],
-          [55.7703734, 52.4382344],
-          [55.7703024, 52.4383289],
-          [55.7702622, 52.4384401],
-          [55.7702620, 52.4385973],
-          [55.7703224, 52.4387424],
-          [55.7704340, 52.4388530],
-          [55.7705039, 52.4388898],
-          [55.7706188, 52.4389176],
-          [55.7708874, 52.4388932],
-          [55.7710852, 52.4388870],
-          [55.7710860, 52.4388979],
-          [55.7698553, 52.4393998],
-          [55.7692445, 52.4396894],
-          [55.7687771, 52.4399665],
-          [55.7678918, 52.4406062],
-          [55.7668778, 52.4413948],
-          [55.7667522, 52.4414318],
-          [55.7666818, 52.4414716],
-          [55.7635306, 52.4439019],
-          [55.7634575, 52.4439437],
-          [55.7632399, 52.4438807],
-          [55.7630846, 52.4438998],
-          [55.7629486, 52.4439769],
-          [55.7628525, 52.4441004],
-          [55.7628158, 52.4442122],
-          [55.7628156, 52.4443670],
-          [55.7627914, 52.4445430],
-          [55.7628025, 52.4446614],
-          [55.7628291, 52.4447363],
-          [55.7628952, 52.4448350],
-          [55.7629543, 52.4448881],
-          [55.7630595, 52.4449434],
-          [55.7631953, 52.4449660],
-          [55.7632498, 52.4449931],
-          [55.7633393, 52.4451071],
-          [55.7656980, 52.4494157],
-          [55.7660563, 52.4501606],
-          [55.7662542, 52.4506374],
-          [55.7664072, 52.4510755],
-          [55.7666304, 52.4517776],
-          [55.7668139, 52.4524754],
-          [55.7669290, 52.4529733],
-          [55.7671124, 52.4540267],
-          [55.7677716, 52.4587627],
-          [55.7677750, 52.4589582],
-          [55.7677474, 52.4591390],
-          [55.7675892, 52.4596125],
-          [55.7675148, 52.4597069],
-          [55.7651439, 52.4607387],
-          [55.7632837, 52.4615701],
-          [55.7630089, 52.4617369],
-          [55.7628002, 52.4619148],
-          [55.7625970, 52.4621539],
-          [55.7617527, 52.4635062],
-          [55.7616858, 52.4635612],
-          [55.7616229, 52.4635850],
-          [55.7614436, 52.4635822],
-          [55.7613280, 52.4636064],
-          [55.7612244, 52.4636634],
-          [55.7611666, 52.4637172],
-          [55.7611025, 52.4638165],
-          [55.7610702, 52.4639302],
-          [55.7610636, 52.4645588],
-          [55.7610443, 52.4646895],
-          [55.7609851, 52.4648314],
-          [55.7587045, 52.4687236],
-          [55.7586524, 52.4687781],
-          [55.7585908, 52.4688098],
-          [55.7584050, 52.4688135],
-          [55.7582947, 52.4688452],
-          [55.7581979, 52.4689069],
-          [55.7581226, 52.4689935],
-          [55.7580750, 52.4690979],
-          [55.7580607, 52.4691733],
-          [55.7580617, 52.4697184],
-          [55.7580170, 52.4698972],
-          [55.7546454, 52.4756268],
-          [55.7545770, 52.4756707],
-          [55.7545150, 52.4756823],
-          [55.7544303, 52.4756569],
-          [55.7543546, 52.4755893],
-          [55.7542987, 52.4754989],
-          [55.7504449, 52.4684044],
-          [55.7503815, 52.4682010],
-          [55.7503328, 52.4678635],
-          [55.7503296, 52.4677314],
-          [55.7503835, 52.4674818],
-          [55.7504028, 52.4672138],
-          [55.7503297, 52.4664027],
-          [55.7503292, 52.4662387],
-          [55.7503642, 52.4659563],
-          [55.7504360, 52.4657233],
-          [55.7523070, 52.4625033],
-          [55.7533875, 52.4607273],
-          [55.7535849, 52.4606233],
-          [55.7536916, 52.4605039],
-          [55.7537360, 52.4603919],
-          [55.7537460, 52.4603120],
-          [55.7537243, 52.4599726],
-          [55.7536798, 52.4598602],
-          [55.7536038, 52.4597662],
-          [55.7535031, 52.4596992],
-          [55.7533932, 52.4596661],
-          [55.7533699, 52.4596354],
-          [55.7473585, 52.4485448],
-          [55.7473181, 52.4483249],
-          [55.7472733, 52.4482182],
-          [55.7471570, 52.4480888],
-          [55.7457909, 52.4455553],
-          [55.7456777, 52.4454439],
-          [55.7455302, 52.4453854],
-          [55.7453715, 52.4453888],
-          [55.7452602, 52.4454321],
-          [55.7451410, 52.4455369],
-          [55.7441198, 52.4469526],
-          [55.7431710, 52.4486251],
-          [55.7420241, 52.4505700],
-          [55.7415437, 52.4516755],
-          [55.7409910, 52.4516076],
-          [55.7403180, 52.4503634],
-          [55.7391858, 52.4483305],
-          [55.7385724, 52.4471190],
-          [55.7380300, 52.4461033],
-          [55.7375764, 52.4451986],
-          [55.7365136, 52.4427969],
-          [55.7363798, 52.4422641],
-          [55.7363528, 52.4419957],
-          [55.7363216, 52.4418992],
-          [55.7362636, 52.4417927],
-          [55.7361388, 52.4416596],
-          [55.7359800, 52.4415703],
-          [55.7341320, 52.4410117],
-          [55.7340346, 52.4398944],
-          [55.7340007, 52.4397346],
-          [55.7328834, 52.4371842],
-          [55.7325441, 52.4365157],
-          [55.7319192, 52.4348928],
-          [55.7300327, 52.4313712],
-          [55.7184235, 52.4100449],
-          [55.7182925, 52.4098771],
-          [55.7178981, 52.4095548],
-          [55.7146970, 52.4036766],
-          [55.7139596, 52.4023111],
-          [55.7132397, 52.4009354],
-          [55.7128737, 52.4003140],
-          [55.7093314, 52.3937978],
-          [55.7093074, 52.3929409],
-          [55.7092857, 52.3928262],
-          [55.7092311, 52.3926863],
-          [55.7085671, 52.3733654],
-          [55.7090444, 52.3735809],
-          [55.7097839, 52.3743827],
-          [55.7126958, 52.3773396],
-          [55.7126630, 52.3778451],
-          [55.7127823, 52.3785809],
-          [55.7129831, 52.3793037],
-          [55.7130104, 52.3802244],
-          [55.7130454, 52.3803252],
-          [55.7137733, 52.3817653],
-          [55.7137325, 52.3823542],
-          [55.7138698, 52.3829137],
-          [55.7139064, 52.3834542],
-          [55.7138377, 52.3843501],
-          [55.7136241, 52.3847150],
-          [55.7133953, 52.3849167],
-          [55.7121871, 52.3842201],
-          [55.7120460, 52.3841709],
-          [55.7118967, 52.3841769],
-          [55.7113499, 52.3843040],
-          [55.7112373, 52.3843490],
-          [55.7111434, 52.3844256],
-          [55.7110768, 52.3845269],
-          [55.7101415, 52.3865651],
-          [55.7095269, 52.3866895],
-          [55.7094551, 52.3867190],
-          [55.7093614, 52.3867878],
-          [55.7093117, 52.3868475],
-          [55.7092610, 52.3869521],
-          [55.7091454, 52.3874987],
-          [55.7093011, 52.3898551],
-          [55.7097035, 52.3918914],
-          [55.7099910, 52.3926938],
-          [55.7101465, 52.3933890],
-          [55.7100595, 52.3938178],
-          [55.7100733, 52.3939345],
-          [55.7101428, 52.3941618],
-          [55.7102097, 52.3942579],
-          [55.7103364, 52.3943484],
-          [55.7104490, 52.3943805],
-          [55.7105934, 52.3943746],
-          [55.7108812, 52.3947566],
-          [55.7110136, 52.3948379],
-          [55.7111279, 52.3948622],
-          [55.7112818, 52.3948416],
-          [55.7114164, 52.3947639],
-          [55.7118643, 52.3941954],
-          [55.7121649, 52.3948334],
-          [55.7122295, 52.3949307],
-          [55.7123194, 52.3950052],
-          [55.7123897, 52.3950390],
-          [55.7125040, 52.3950626],
-          [55.7125820, 52.3950594],
-          [55.7126940, 52.3950266],
-          [55.7128198, 52.3949356],
-          [55.7131105, 52.3944807],
-          [55.7133440, 52.3941600],
-          [55.7140368, 52.3935377],
-          [55.7142531, 52.3934007],
-          [55.7144484, 52.3937075],
-          [55.7145383, 52.3937811],
-          [55.7146083, 52.3938144],
-          [55.7147222, 52.3938375],
-          [55.7148378, 52.3938270],
-          [55.7149456, 52.3937837],
-          [55.7150364, 52.3937112],
-          [55.7158837, 52.3923618],
-          [55.7159197, 52.3922499],
-          [55.7159216, 52.3921324],
-          [55.7158893, 52.3920193],
-          [55.7158096, 52.3918768],
-          [55.7160742, 52.3913795],
-          [55.7162262, 52.3913983],
-          [55.7163404, 52.3913732],
-          [55.7164425, 52.3913162],
-          [55.7165238, 52.3912321],
-          [55.7173901, 52.3897342],
-          [55.7174324, 52.3896283],
-          [55.7174394, 52.3894768],
-          [55.7173896, 52.3893336],
-          [55.7163427, 52.3875289],
-          [55.7180572, 52.3846820],
-          [55.7181093, 52.3845405],
-          [55.7181053, 52.3843897],
-          [55.7180655, 52.3842836],
-          [55.7171973, 52.3826977],
-          [55.7168347, 52.3818252],
-          [55.7156427, 52.3797940],
-          [55.7158431, 52.3793793],
-          [55.7165583, 52.3782013],
-          [55.7199463, 52.3759866],
-          [55.7200447, 52.3759028],
-          [55.7201175, 52.3758091],
-          [55.7201706, 52.3757025],
-          [55.7202014, 52.3755881],
-          [55.7202041, 52.3754101],
-          [55.7201542, 52.3752387],
-          [55.7196482, 52.3743060],
-          [55.7195249, 52.3739807],
-          [55.7186406, 52.3723398],
-          [55.7185558, 52.3721468],
-          [55.7185332, 52.3719935],
-          [55.7185255, 52.3717458],
-          [55.7185731, 52.3713838],
-          [55.7186373, 52.3685619],
-          [55.7187031, 52.3683877],
-          [55.7187237, 52.3682334],
-          [55.7187167, 52.3680013],
-          [55.7186509, 52.3678010],
-          [55.7186489, 52.3672948],
-          [55.7186136, 52.3665651],
-          [55.7187023, 52.3645480],
-          [55.7187986, 52.3643548],
-          [55.7188307, 52.3641813],
-          [55.7188105, 52.3640053],
-          [55.7187115, 52.3637646],
-          [55.7187926, 52.3589838],
-          [55.7187867, 52.3576571],
-          [55.7187999, 52.3575332],
-          [55.7188522, 52.3574704],
-          [55.7189057, 52.3574668],
-          [55.7189601, 52.3575092],
-          [55.7203367, 52.3601152],
-          [55.7209327, 52.3613146],
-          [55.7210899, 52.3614660],
-          [55.7212525, 52.3615413],
-          [55.7214499, 52.3615644],
-          [55.7216255, 52.3615287],
-          [55.7217666, 52.3614546],
-          [55.7218956, 52.3613305],
-          [55.7221879, 52.3608419],
-          [55.7222597, 52.3606472],
-          [55.7222692, 52.3605287],
-          [55.7222554, 52.3604109],
-          [55.7222011, 52.3602620],
-          [55.7207160, 52.3575505],
-          [55.7207223, 52.3573489],
-          [55.7206635, 52.3571199],
-          [55.7216405, 52.3560695],
-          [55.7217329, 52.3559115],
-          [55.7217717, 52.3557534],
-          [55.7217719, 52.3556309],
-          [55.7217473, 52.3555115],
-          [55.7216273, 52.3552501],
-          [55.7214491, 52.3547489],
-          [55.7213118, 52.3541226],
-          [55.7212824, 52.3537882],
-          [55.7212791, 52.3533543],
-          [55.7213473, 52.3516148],
-          [55.7255037, 52.3553805],
-          [55.7256244, 52.3554674],
-          [55.7257918, 52.3555294],
-          [55.7259693, 52.3555394],
-          [55.7261426, 52.3554968],
-          [55.7262952, 52.3554052],
-          [55.7263791, 52.3553208],
-          [55.7264446, 52.3552217],
-          [55.7267298, 52.3546302],
-          [55.7267746, 52.3544995],
-          [55.7267856, 52.3543065],
-          [55.7267359, 52.3537771],
-          [55.7267081, 52.3536517],
-          [55.7266442, 52.3535180],
-          [55.7262945, 52.3529905],
-          [55.7262911, 52.3528154],
-          [55.7262361, 52.3526433],
-          [55.7261718, 52.3525411],
-          [55.7260570, 52.3524290],
-          [55.7258227, 52.3522995],
-          [55.7256920, 52.3522495],
-          [55.7255634, 52.3522309],
-          [55.7253767, 52.3522470],
-          [55.7220204, 52.3506345],
-          [55.7218236, 52.3505756],
-          [55.7217453, 52.3503866],
-          [55.7215837, 52.3501913],
-          [55.7214333, 52.3500470],
-          [55.7212371, 52.3499415],
-          [55.7210257, 52.3498947],
-          [55.7208302, 52.3499201],
-          [55.7206378, 52.3500193],
-          [55.7204953, 52.3501753],
-          [55.7200891, 52.3499634],
-          [55.7201034, 52.3497013],
-          [55.7200775, 52.3495879],
-          [55.7200302, 52.3494819],
-          [55.7198941, 52.3493184],
-          [55.7197014, 52.3492002],
-          [55.7193533, 52.3487565],
-          [55.7192279, 52.3416801],
-          [55.7192654, 52.3412940],
-          [55.7198372, 52.3402534],
-          [55.7206773, 52.3388520],
-          [55.7207165, 52.3387053],
-          [55.7207152, 52.3385364],
-          [55.7206810, 52.3384080],
-          [55.7205809, 52.3381937],
-          [55.7215637, 52.3366370],
-          [55.7216903, 52.3366285],
-          [55.7218042, 52.3365986],
-          [55.7219104, 52.3365468],
-          [55.7220318, 52.3364479],
-          [55.7226298, 52.3355754],
-        ],
-        [
-          [55.7498371, 52.4581518],
-          [55.7514113, 52.4611058],
-          [55.7498001, 52.4639731],
-          [55.7496861, 52.4639261],
-          [55.7495346, 52.4639191],
-          [55.7493914, 52.4639690],
-          [55.7492953, 52.4640468],
-          [55.7481433, 52.4637744],
-          [55.7474549, 52.4624967],
-          [55.7475878, 52.4622015],
-          [55.7476365, 52.4619388],
-          [55.7498371, 52.4581518],
-        ],
-      ], {
-        color: '#F97316',
-        fillColor: '#F97316',
-        fillOpacity: 0.12,
-        weight: 2
-      }).addTo(map);
-      
-      deliveryPolygon.bindPopup("<b>Зона экспресс-доставки</b><br><span class='text-xs font-normal text-white/70'>Обслуживаемые комплексы Нового Города (включая Чаллы Яр)</span>");
-    });
+    } else {
+      setTimeout(initAnimations, 50);
+    }
   </script>
 </body>
 </html>

@@ -484,7 +484,57 @@
     // 1. Year auto-update
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 2. High-Efficiency Video Setup
+    // 2. High-Efficiency Video Setup & Desktop Mouse Drag-To-Scroll
+    const videoTrack = document.getElementById('video-track');
+    let isDown = false;
+    let startX = 0;
+    let scrollLeftPos = 0;
+    let hasDragged = false;
+    const dragThreshold = 6;
+
+    if (videoTrack) {
+      videoTrack.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return; // Left click only
+        isDown = true;
+        hasDragged = false;
+        startX = e.pageX - videoTrack.offsetLeft;
+        scrollLeftPos = videoTrack.scrollLeft;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDown || !videoTrack) return;
+        const x = e.pageX - videoTrack.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        if (Math.abs(x - startX) > dragThreshold) {
+          if (!hasDragged) {
+            hasDragged = true;
+            videoTrack.classList.add('is-dragging');
+            videoTrack.style.scrollSnapType = 'none';
+            videoTrack.style.scrollBehavior = 'auto';
+          }
+          videoTrack.scrollLeft = scrollLeftPos - walk;
+        }
+      });
+
+      const stopDrag = () => {
+        if (!isDown) return;
+        isDown = false;
+        if (videoTrack) {
+          videoTrack.classList.remove('is-dragging');
+          videoTrack.style.scrollSnapType = '';
+          videoTrack.style.scrollBehavior = '';
+        }
+        setTimeout(() => {
+          hasDragged = false;
+        }, 80);
+      };
+
+      window.addEventListener('mouseup', stopDrag);
+      videoTrack.addEventListener('mouseleave', () => {
+        if (isDown) stopDrag();
+      });
+    }
+
     const videoContainers = document.querySelectorAll('.video-card-container');
     videoContainers.forEach(container => {
       const src = container.getAttribute('data-src');
@@ -493,7 +543,7 @@
       const video = document.createElement('video');
       video.setAttribute('data-src', src);
       if (poster) video.setAttribute('poster', poster);
-      video.className = "w-full h-full object-cover";
+      video.className = "w-full h-full object-cover pointer-events-none";
       video.loop = true;
       video.muted = true;
       video.setAttribute('playsinline', '');
@@ -504,7 +554,7 @@
       gradient.className = "absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none z-10";
 
       const overlay = document.createElement('div');
-      overlay.className = "absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 bg-black/5";
+      overlay.className = "absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 bg-black/5 pointer-events-none";
 
       const playIcon = `<div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-2xl"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white" class="ml-1"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>`;
       const pauseIcon = `<div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-2xl"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></div>`;
@@ -516,6 +566,7 @@
 
       let isMuted = true;
       container.addEventListener('click', () => {
+        if (hasDragged) return; // Prevent toggle when scrolling via drag
         isMuted = !isMuted;
         video.muted = isMuted;
         overlay.innerHTML = isMuted ? playIcon : pauseIcon;

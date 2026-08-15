@@ -657,7 +657,22 @@ button { font-family: inherit; border: none; background: transparent; cursor: po
   border-color: var(--color-brand-orange);
 }
 
-/* Video Card Carousel */
+/* Video Card Carousel & PC Drag-To-Scroll */
+#video-track {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-x;
+}
+
+#video-track.is-dragging {
+  cursor: grabbing;
+}
+
+#video-track.is-dragging .video-card-container {
+  cursor: grabbing;
+}
+
 .video-card-container {
   position: relative;
   flex: none;
@@ -671,6 +686,8 @@ button { font-family: inherit; border: none; background: transparent; cursor: po
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.35);
   scroll-snap-align: center;
   transform: translateZ(0);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .video-card-container video {

@@ -261,7 +261,39 @@ h1, h2, h3, h4, h5, h6 {
 .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.75rem; }
 .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
 .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; }
+.space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 2rem; }
 .space-y-10 > :not([hidden]) ~ :not([hidden]) { margin-top: 2.5rem; }
+
+/* Perfect Square Icon Boxes */
+.icon-box-square {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+}
+
+.icon-box-square-lg {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 0.875rem;
+}
+
+.aspect-square { aspect-ratio: 1 / 1; }
+.break-words { overflow-wrap: break-word; word-break: break-word; }
+.leading-tight { line-height: 1.25; }
 
 .w-full { width: 100%; }
 .w-fit { width: fit-content; }
@@ -688,6 +720,7 @@ button { font-family: inherit; border: none; background: transparent; cursor: po
   .sm\:text-base { font-size: 1rem; line-height: 1.5rem; }
   .sm\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
   .sm\:text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+  .sm\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
   .sm\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
   .sm\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
   .video-card-container { width: 310px; height: 540px; }

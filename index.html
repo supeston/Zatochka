@@ -322,17 +322,20 @@
                   <div class="icon-box-square text-brand-yellow shrink-0 bg-brand-yellow/10 border border-brand-yellow/20">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                   </div>
-                  <div>
-                    <h4 class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-1.5">Часы работы</h4>
-                    <div class="text-white font-semibold leading-relaxed space-y-1.5">
-                      <div class="flex items-center gap-2 flex-wrap text-sm sm:text-base">
-                        <span>Пн - Пт:</span>
-                        <strong class="text-white font-black">09:00 – 15:00</strong>
-                        <span class="text-xs font-semibold text-brand-yellow bg-brand-yellow/15 border border-brand-yellow/30 px-2 py-0.5 rounded-md whitespace-nowrap">с 15:00 до 19:00 по звонку</span>
+                  <div class="flex-1 min-w-0">
+                    <h4 class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-2.5">Часы работы</h4>
+                    <div class="space-y-2 w-full">
+                      <div class="flex items-center justify-between gap-2 pb-1.5 border-b border-white/[0.06] text-xs sm:text-sm">
+                        <span class="text-white/80 font-medium">Пн – Пт (будни)</span>
+                        <span class="text-white font-bold text-sm sm:text-base tracking-wide whitespace-nowrap">09:00 – 15:00</span>
                       </div>
-                      <div class="text-sm sm:text-base">
-                        <span>Сб - Вс:</span>
-                        <span class="text-brand-orange font-bold ml-1">по предварительному звонку</span>
+                      <div class="flex items-center justify-between gap-2 pb-1.5 border-b border-white/[0.06] text-xs sm:text-sm">
+                        <span class="text-white/70 font-medium">Вечер (15:00 – 19:00)</span>
+                        <span class="text-brand-yellow font-bold bg-brand-yellow/15 border border-brand-yellow/30 px-2 py-0.5 rounded-md whitespace-nowrap text-xs">по звонку</span>
+                      </div>
+                      <div class="flex items-center justify-between gap-2 text-xs sm:text-sm">
+                        <span class="text-white/70 font-medium">Сб – Вс (выходные)</span>
+                        <span class="text-brand-orange font-bold bg-brand-orange/15 border border-brand-orange/30 px-2 py-0.5 rounded-md whitespace-nowrap text-xs">по звонку</span>
                       </div>
                     </div>
                   </div>
@@ -450,17 +453,20 @@
                 <div class="icon-box-square text-brand-yellow shrink-0 bg-brand-yellow/10 border border-brand-yellow/20">
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
-                <div>
-                  <h4 class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-1.5">Режим работы</h4>
-                  <div class="text-white font-semibold leading-relaxed space-y-1.5">
-                    <div class="flex items-center gap-2 flex-wrap text-base sm:text-lg">
-                      <span>Пн - Пт:</span>
-                      <strong class="text-white font-black">09:00 – 15:00</strong>
-                      <span class="text-xs font-semibold text-brand-yellow bg-brand-yellow/15 border border-brand-yellow/30 px-2 py-0.5 rounded-md whitespace-nowrap">с 15:00 до 19:00 по звонку</span>
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-2.5">Режим работы</h4>
+                  <div class="space-y-2 w-full">
+                    <div class="flex items-center justify-between gap-2 pb-1.5 border-b border-white/[0.06] text-xs sm:text-sm">
+                      <span class="text-white/80 font-medium">Пн – Пт (будни)</span>
+                      <span class="text-white font-bold text-sm sm:text-base tracking-wide whitespace-nowrap">09:00 – 15:00</span>
                     </div>
-                    <div class="text-base sm:text-lg">
-                      <span>Сб - Вс:</span>
-                      <span class="text-brand-orange font-bold ml-1">по предварительному звонку</span>
+                    <div class="flex items-center justify-between gap-2 pb-1.5 border-b border-white/[0.06] text-xs sm:text-sm">
+                      <span class="text-white/70 font-medium">Вечер (15:00 – 19:00)</span>
+                      <span class="text-brand-yellow font-bold bg-brand-yellow/15 border border-brand-yellow/30 px-2 py-0.5 rounded-md whitespace-nowrap text-xs">по звонку</span>
+                    </div>
+                    <div class="flex items-center justify-between gap-2 text-xs sm:text-sm">
+                      <span class="text-white/70 font-medium">Сб – Вс (выходные)</span>
+                      <span class="text-brand-orange font-bold bg-brand-orange/15 border border-brand-orange/30 px-2 py-0.5 rounded-md whitespace-nowrap text-xs">по звонку</span>
                     </div>
                   </div>
                 </div>
@@ -497,16 +503,49 @@
   <div id="modal-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none z-50 transition-opacity duration-500 flex items-center justify-center p-4">
     <div id="schedule-modal" class="w-full max-w-sm panel-premium rounded-3xl p-6 sm:p-8 opacity-0 scale-95 transition-all duration-500 relative border border-white/20 shadow-2xl">
       <button id="schedule-close" class="absolute top-4 right-4 text-white/70 hover:text-white smooth-transition text-2xl w-8 h-8 flex items-center justify-center rounded-full bg-white/10 border border-white/15" aria-label="Закрыть модальное окно">&times;</button>
-      <h4 class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-6">График работы мастерской</h4>
-      <div class="text-white text-sm sm:text-base space-y-3 font-medium">
-        <div class="flex items-center justify-between border-b border-white/[0.08] pb-2"><span>Понедельник</span><div class="flex items-center gap-2"><span class="text-white font-black bg-white/15 px-2.5 py-1 rounded text-xs sm:text-sm">09:00 – 15:00</span><span class="text-[11px] text-brand-yellow bg-brand-yellow/10 border border-brand-yellow/20 px-2 py-0.5 rounded font-semibold whitespace-nowrap hidden sm:inline-block">до 19:00 по звонку</span></div></div>
-        <div class="flex items-center justify-between border-b border-white/[0.08] pb-2"><span>Вторник</span><div class="flex items-center gap-2"><span class="text-white font-black bg-white/15 px-2.5 py-1 rounded text-xs sm:text-sm">09:00 – 15:00</span><span class="text-[11px] text-brand-yellow bg-brand-yellow/10 border border-brand-yellow/20 px-2 py-0.5 rounded font-semibold whitespace-nowrap hidden sm:inline-block">до 19:00 по звонку</span></div></div>
-        <div class="flex items-center justify-between border-b border-white/[0.08] pb-2"><span>Среда</span><div class="flex items-center gap-2"><span class="text-white font-black bg-white/15 px-2.5 py-1 rounded text-xs sm:text-sm">09:00 – 15:00</span><span class="text-[11px] text-brand-yellow bg-brand-yellow/10 border border-brand-yellow/20 px-2 py-0.5 rounded font-semibold whitespace-nowrap hidden sm:inline-block">до 19:00 по звонку</span></div></div>
-        <div class="flex items-center justify-between border-b border-white/[0.08] pb-2"><span>Четверг</span><div class="flex items-center gap-2"><span class="text-white font-black bg-white/15 px-2.5 py-1 rounded text-xs sm:text-sm">09:00 – 15:00</span><span class="text-[11px] text-brand-yellow bg-brand-yellow/10 border border-brand-yellow/20 px-2 py-0.5 rounded font-semibold whitespace-nowrap hidden sm:inline-block">до 19:00 по звонку</span></div></div>
-        <div class="flex items-center justify-between border-b border-white/[0.08] pb-2"><span>Пятница</span><div class="flex items-center gap-2"><span class="text-white font-black bg-white/15 px-2.5 py-1 rounded text-xs sm:text-sm">09:00 – 15:00</span><span class="text-[11px] text-brand-yellow bg-brand-yellow/10 border border-brand-yellow/20 px-2 py-0.5 rounded font-semibold whitespace-nowrap hidden sm:inline-block">до 19:00 по звонку</span></div></div>
-        <div class="flex items-center justify-between"><span>Суббота - Воскресенье</span><span class="text-brand-orange font-bold bg-brand-orange/15 border border-brand-orange/30 px-3 py-1 rounded text-xs sm:text-sm">По звонку</span></div>
+      <h4 class="text-xs font-bold text-brand-yellow uppercase tracking-widest mb-5">График работы мастерской</h4>
+      <div class="text-white text-xs sm:text-sm space-y-2.5 font-medium">
+        <div class="flex items-center justify-between border-b border-white/[0.08] pb-2">
+          <span>Понедельник</span>
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-white font-bold bg-white/15 px-2 py-0.5 rounded text-xs">09:00 – 15:00</span>
+            <span class="text-[11px] text-brand-yellow font-semibold bg-brand-yellow/10 border border-brand-yellow/20 px-1.5 py-0.5 rounded whitespace-nowrap">до 19:00 по звонку</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between border-b border-white/[0.08] pb-2">
+          <span>Вторник</span>
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-white font-bold bg-white/15 px-2 py-0.5 rounded text-xs">09:00 – 15:00</span>
+            <span class="text-[11px] text-brand-yellow font-semibold bg-brand-yellow/10 border border-brand-yellow/20 px-1.5 py-0.5 rounded whitespace-nowrap">до 19:00 по звонку</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between border-b border-white/[0.08] pb-2">
+          <span>Среда</span>
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-white font-bold bg-white/15 px-2 py-0.5 rounded text-xs">09:00 – 15:00</span>
+            <span class="text-[11px] text-brand-yellow font-semibold bg-brand-yellow/10 border border-brand-yellow/20 px-1.5 py-0.5 rounded whitespace-nowrap">до 19:00 по звонку</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between border-b border-white/[0.08] pb-2">
+          <span>Четверг</span>
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-white font-bold bg-white/15 px-2 py-0.5 rounded text-xs">09:00 – 15:00</span>
+            <span class="text-[11px] text-brand-yellow font-semibold bg-brand-yellow/10 border border-brand-yellow/20 px-1.5 py-0.5 rounded whitespace-nowrap">до 19:00 по звонку</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between border-b border-white/[0.08] pb-2">
+          <span>Пятница</span>
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-white font-bold bg-white/15 px-2 py-0.5 rounded text-xs">09:00 – 15:00</span>
+            <span class="text-[11px] text-brand-yellow font-semibold bg-brand-yellow/10 border border-brand-yellow/20 px-1.5 py-0.5 rounded whitespace-nowrap">до 19:00 по звонку</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-between pt-0.5">
+          <span class="text-white/80">Суббота – Воскресенье</span>
+          <span class="text-brand-orange font-bold bg-brand-orange/15 border border-brand-orange/30 px-2.5 py-0.5 rounded text-xs">По звонку</span>
+        </div>
       </div>
-      <p class="text-white/90 text-xs mt-5 border-t border-white/[0.08] pt-4 leading-relaxed">
+      <p class="text-white/80 text-xs mt-5 border-t border-white/[0.08] pt-4 leading-relaxed">
         С 15:00 до 19:00 в будни и в выходные дни принимаем по предварительному звонку:
       </p>
       <div class="mt-5">

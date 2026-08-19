@@ -264,7 +264,7 @@ h1, h2, h3, h4, h5, h6 {
 .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 2rem; }
 .space-y-10 > :not([hidden]) ~ :not([hidden]) { margin-top: 2.5rem; }
 
-/* Perfect Square Icon Boxes */
+/* Perfect Square Icon Boxes with Smooth Rounded Corners */
 .icon-box-square {
   width: 44px;
   height: 44px;
@@ -279,16 +279,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .icon-box-square-lg {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  min-height: 48px;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
   aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border-radius: 0.875rem;
+  border-radius: 1rem;
 }
 
 .aspect-square { aspect-ratio: 1 / 1; }
@@ -458,11 +458,13 @@ h1, h2, h3, h4, h5, h6 {
 .bg-brand-orange { background-color: var(--color-brand-orange); }
 .bg-brand-orange\/5 { background-color: rgba(249, 115, 22, 0.05); }
 .bg-brand-orange\/10 { background-color: rgba(249, 115, 22, 0.1); }
+.bg-brand-orange\/15 { background-color: rgba(249, 115, 22, 0.15); }
 .bg-brand-orange\/20 { background-color: rgba(249, 115, 22, 0.2); }
 
 .bg-brand-yellow { background-color: var(--color-brand-yellow); }
 .bg-brand-yellow\/5 { background-color: rgba(250, 204, 21, 0.05); }
 .bg-brand-yellow\/10 { background-color: rgba(250, 204, 21, 0.1); }
+.bg-brand-yellow\/15 { background-color: rgba(250, 204, 21, 0.15); }
 .bg-brand-yellow\/20 { background-color: rgba(250, 204, 21, 0.2); }
 
 .bg-slate-900 { background-color: #0F172A; }
